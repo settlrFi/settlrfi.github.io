@@ -1,147 +1,154 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Settlr | Pitch Deck — Tokenized Asset Market</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Manrope', sans-serif; background:#020617; color:#e2e8f0; }
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-    .blob { filter: blur(90px); opacity:.22; position:fixed; border-radius:9999px; z-index:-1; animation: drift 18s ease-in-out infinite alternate; }
-    .blob-1 { width:42vw; height:42vw; left:-10vw; top:-8vw; background:#4f46e5; }
-    .blob-2 { width:38vw; height:38vw; right:-10vw; top:20vh; background:#0ea5e9; animation-delay:-5s; }
-    .blob-3 { width:36vw; height:36vw; left:25vw; bottom:-14vw; background:#10b981; animation-delay:-9s; }
-    @keyframes drift { from { transform: translate(0,0) scale(1); } to { transform: translate(40px,-30px) scale(1.08);} }
-    .slide { min-height: 92vh; }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settlr | Institutional Access</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Manrope', sans-serif; background-color: #020617; overflow: hidden; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+        /* Sfumature di sfondo animate */
+        .mesh-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+        }
+        .mesh-blob {
+            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.4;
+            animation: float 20s infinite alternate ease-in-out;
+        }
+        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #4f46e5; animation-delay: 0s; }
+        .blob-2 { bottom: -10%; right: -10%; width: 50vw; height: 50vw; background: #8b5cf6; animation-delay: -5s; }
+        
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        /* Shake animation for error */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .shake { animation: shake 0.3s ease-in-out; border-color: #ef4444 !important; }
+
+        /* Loader */
+        .loader {
+            border: 2px solid rgba(255,255,255,0.1);
+            border-left-color: #ffffff;
+            border-radius: 50%;
+            width: 20px; height: 20px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
 </head>
-<body>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
+<body class="flex items-center justify-center h-screen text-slate-200">
 
-  <main class="max-w-6xl mx-auto px-6 md:px-10 py-10 space-y-8">
+    <div class="mesh-bg">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+    </div>
 
-    <section class="slide rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-xl p-8 md:p-12 flex flex-col justify-center">
-      <div class="inline-flex items-center gap-3 w-fit px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-xs uppercase tracking-widest font-bold mb-8">
-        Pitch Deck · Platform Market
-      </div>
-      <h1 class="text-4xl md:text-7xl font-black tracking-tight text-white leading-[1.05]">
-        Mercato Globale per<br>
-        <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400">Asset Tokenizzati</span>
-      </h1>
-      <p class="mt-8 max-w-3xl text-lg md:text-2xl text-slate-300 leading-relaxed">
-        Infrastruttura permissioned su rail pubbliche: <strong class="text-white">settlement T+0</strong>,
-        <strong class="text-white">Delivery vs Payment atomico</strong>, compliance nativa on-chain.
-      </p>
-      <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl">
-        <div class="rounded-2xl p-4 bg-white/5 border border-white/10">
-          <p class="text-3xl font-black text-sky-400">T+0</p>
-          <p class="text-xs uppercase tracking-wide text-slate-500 font-bold">Settlement</p>
+    <main id="loginCard" class="relative w-full max-w-md mx-4 p-8 bg-slate-900/60 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl transition-all">
+        
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center justify-center w-36 h-36 rounded-3xl bg-white/5 border border-white/10 mb-6 shadow-lg shadow-indigo-500/20">
+                <img src="/img/settlr.png" alt="Settlr" class="w-25 h-auto drop-shadow-[0_0_15px_rgba(255,255,255,0.6)]">
+            </div>
+            <h1 class="text-3xl font-black text-white tracking-tight mb-2">Institutional Access</h1>
+            <p class="text-slate-400 text-sm">Please identify yourself to proceed.</p>
         </div>
-        <div class="rounded-2xl p-4 bg-white/5 border border-white/10">
-          <p class="text-3xl font-black text-indigo-400">DvP</p>
-          <p class="text-xs uppercase tracking-wide text-slate-500 font-bold">Atomic Swap</p>
-        </div>
-        <div class="rounded-2xl p-4 bg-white/5 border border-white/10">
-          <p class="text-3xl font-black text-emerald-400">KYC</p>
-          <p class="text-xs uppercase tracking-wide text-slate-500 font-bold">On-chain Gating</p>
-        </div>
-      </div>
-    </section>
 
-    <section class="slide rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-xl p-8 md:p-12">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-8">1. Problema</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl p-6 bg-rose-950/20 border border-rose-500/20">
-          <h3 class="text-xl font-bold text-rose-300">Legacy Market Rails</h3>
-          <ul class="mt-4 space-y-2 text-slate-300 text-sm">
-            <li>• Settlement T+2/T+3 con rischio controparte</li>
-            <li>• Frammentazione tra clearing, custodia e registry</li>
-            <li>• Costi elevati di riconciliazione e reporting</li>
-            <li>• Accesso internazionale lento e poco inclusivo</li>
-          </ul>
-        </div>
-        <div class="rounded-2xl p-6 bg-slate-800/50 border border-white/10">
-          <h3 class="text-xl font-bold text-white">Conseguenza</h3>
-          <p class="mt-4 text-slate-300 leading-relaxed">
-            Efficienza di capitale subottimale, operazioni lente, e scarsa trasparenza real-time su ownership e audit trail.
-          </p>
-          <p class="mt-4 text-sm text-slate-400 font-mono">Need: market infrastructure programmable + compliant by design.</p>
-        </div>
-      </div>
-    </section>
+        <form onsubmit="unlock(event)" class="space-y-6">
+            <div class="space-y-2">
+                <label for="pw" class="text-xs font-bold text-indigo-300 uppercase tracking-widest ml-1">Access Key</label>
+                <div class="relative">
+                    <input 
+                        id="pw" 
+                        type="password" 
+                        placeholder="••••••••••••" 
+                        class="w-full bg-slate-950/50 border border-white/10 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 rounded-xl px-5 py-4 text-white placeholder-slate-600 outline-none transition-all font-mono tracking-widest"
+                        autocomplete="off"
+                    >
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    </div>
+                </div>
+            </div>
 
-    <section class="slide rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-xl p-8 md:p-12">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-8">2. Soluzione: Settlr Platform Market</h2>
-      <div class="grid md:grid-cols-3 gap-5">
-        <div class="rounded-2xl p-6 bg-indigo-950/20 border border-indigo-500/20">
-          <p class="text-indigo-300 font-bold">Onboarding & Compliance</p>
-          <p class="mt-2 text-sm text-slate-300">Registry on-chain: solo indirizzi verificati possono emettere/scambiare.</p>
-        </div>
-        <div class="rounded-2xl p-6 bg-emerald-950/20 border border-emerald-500/20">
-          <p class="text-emerald-300 font-bold">Emissione 1:1</p>
-          <p class="mt-2 text-sm text-slate-300">Dual sign-off Issuer + Custodian prima del mint.</p>
-        </div>
-        <div class="rounded-2xl p-6 bg-fuchsia-950/20 border border-fuchsia-500/20">
-          <p class="text-fuchsia-300 font-bold">Mercato Secondario T+0</p>
-          <p class="mt-2 text-sm text-slate-300">Asset e cash si muovono insieme oppure niente transazione.</p>
-        </div>
-      </div>
-      <div class="mt-8 rounded-2xl p-6 bg-black/30 border border-white/10">
-        <p class="text-slate-300">UX enterprise-ready: configurazione contratti, wallet integration (MetaMask), e controllo operativo senza complessità Solidity.</p>
-      </div>
-    </section>
+            <button 
+                id="btn"
+                class="group relative w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold text-lg tracking-wide shadow-lg shadow-indigo-900/40 hover:scale-[1.02] active:scale-[0.98] transition-all overflow-hidden"
+            >
+                <span id="btnText" class="relative z-10 flex items-center justify-center gap-2">
+                    Authenticate
+                    <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </span>
+                <span id="loader" class="hidden absolute inset-0 flex items-center justify-center bg-indigo-600 z-20">
+                    <div class="loader"></div>
+                </span>
+                
+                <div class="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[30deg] group-hover:animate-[shine_0.75s_ease-in-out]"></div>
+            </button>
+        </form>
 
-    <section class="slide rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-xl p-8 md:p-12">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-8">3. Perché ora</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
-          <h3 class="text-xl font-bold text-white">Regolamentazione + Maturità Tech</h3>
-          <p class="mt-3 text-slate-300 text-sm leading-relaxed">
-            Gli operatori cercano mercati digitali con governance forte: KYC/AML, auditabilità e finalità immediata.
-          </p>
+        <div class="mt-8 text-center border-t border-white/5 pt-6">
+            <p class="text-xs text-slate-600 font-mono">
+                Secured by Settlr Sentinel&trade; <br>
+                &copy; 2026 Settlr.
+            </p>
         </div>
-        <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
-          <h3 class="text-xl font-bold text-white">Fit con use case ad alto valore</h3>
-          <p class="mt-3 text-slate-300 text-sm leading-relaxed">
-            Equity, bond, fondi, commodity e carbon credits beneficiano direttamente di tracciabilità e settlement atomico.
-          </p>
-        </div>
-      </div>
-    </section>
+    </main>
 
-    <section class="slide rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-xl p-8 md:p-12">
-      <h2 class="text-3xl md:text-5xl font-black text-white mb-8">4. Moat tecnologico</h2>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl p-6 bg-sky-950/20 border border-sky-500/20">
-          <h3 class="font-bold text-sky-300">Quant & Market Microstructure</h3>
-          <p class="mt-2 text-sm text-slate-300">Pricing e inventory management fondati su ricerca accademica in econofisica e microstruttura.</p>
-        </div>
-        <div class="rounded-2xl p-6 bg-amber-950/20 border border-amber-500/20">
-          <h3 class="font-bold text-amber-300">Compliance as protocol primitive</h3>
-          <p class="mt-2 text-sm text-slate-300">Policy enforcement non applicativo ma a livello di smart contract.</p>
-        </div>
-      </div>
-      <p class="mt-8 text-slate-400 text-sm font-mono">Differenza chiave: non solo tokenizzazione, ma infrastruttura completa di mercato.</p>
-    </section>
+    <script>
+        function unlock(e) {
+            e.preventDefault();
+            
+            const pwInput = document.getElementById('pw');
+            const btnText = document.getElementById('btnText');
+            const loader = document.getElementById('loader');
+            const card = document.getElementById('loginCard');
+            const pw = pwInput.value;
 
-    <section class="slide rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-xl p-8 md:p-12 flex flex-col justify-center text-center">
-      <h2 class="text-4xl md:text-6xl font-black text-white leading-tight">
-        From <span class="text-rose-400">T+2 friction</span><br>to <span class="text-emerald-400">T+0 finality</span>
-      </h2>
-      <p class="mt-6 text-slate-300 max-w-2xl mx-auto">
-        Settlr abilita un mercato più veloce, verificabile e globale per gli asset reali tokenizzati.
-      </p>
-      <a href="/modelli/platform_market" class="mt-10 inline-flex mx-auto px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-violet-600 text-white font-bold hover:scale-105 transition">
-        Apri demo operativa
-      </a>
-      <p class="mt-8 text-xs text-slate-600 font-mono">© 2026 Settlr — Institutional-grade tokenized market rails</p>
-    </section>
-  </main>
+            // UI Loading State
+            btnText.classList.add('opacity-0');
+            loader.classList.remove('hidden');
+            pwInput.classList.remove('shake', 'border-red-500', 'text-red-500');
+
+            // Simulate network request delay (makes it feel more real)
+            setTimeout(() => {
+                if(pw === 'settlr2026'){ 
+                    // Success
+                    location.href = '/OPGROfzwvcPiuyE/'; 
+                } else {
+                    // Error
+                    btnText.classList.remove('opacity-0');
+                    loader.classList.add('hidden');
+                    
+                    // Error feedback
+                    pwInput.classList.add('shake', 'border-red-500', 'text-red-500');
+                    pwInput.value = '';
+                    pwInput.placeholder = 'Access Denied';
+                    
+                    setTimeout(() => {
+                        pwInput.classList.remove('shake');
+                    }, 500);
+                }
+            }, 800);
+        }
+    </script>
+
+    <style>
+        @keyframes shine { 100% { left: 125%; } }
+    </style>
 </body>
 </html>

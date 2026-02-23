@@ -1,30 +1,262 @@
 ---
 import Layout from '../../layouts/BaseLayout.astro';
+
+const pageTitle = 'Settlr Investor Deck';
 ---
 
-<Layout title="Area riservata">
-  <section class="py-24">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h1 class="text-4xl font-extrabold mb-8 text-primary-600">
-        Benvenuto nell’area riservata
-      </h1>
-      <p class="text-lg text-slate-700 mb-4">
-        Grande!!! Hai trovato la password ...
-      </p>
-      <p class="text-slate-600">
-        Chiunque conosca l’URL <br />
-        <code>/OPGROfzwvcPiuyE/</code> può aprire direttamente la pagina.
-      </p>
-
-      <!-- esempio di contenuto privato -->
-      <div class="mt-10 p-6 bg-white shadow rounded-xl w-full text-left">
-        <h2 class="text-2xl font-semibold mb-4">Documentazione interna</h2>
-        <ul class="list-disc list-inside space-y-2">
-          <li><a class="text-indigo-600 hover:underline" href="#">Road‑map 2026 (coming soon)</a></li>
-          <li><a class="text-indigo-600 hover:underline" href="#">Report mensile R&amp;D</a></li>
-          <li><a class="text-indigo-600 hover:underline" href="#">API key segrete</a></li>
-        </ul>
-      </div>
+<Layout title={pageTitle}>
+  <div class="deck-page text-slate-200">
+    <div class="fixed inset-0 -z-10 bg-slate-950 overflow-hidden">
+      <div class="absolute -top-20 -left-20 w-[34rem] h-[34rem] rounded-full bg-indigo-700/20 blur-3xl animate-blob"></div>
+      <div class="absolute top-[18%] -right-20 w-[30rem] h-[30rem] rounded-full bg-sky-700/20 blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-20 left-[24%] w-[28rem] h-[28rem] rounded-full bg-emerald-700/20 blur-3xl animate-blob animation-delay-4000"></div>
+      <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
     </div>
-  </section>
+
+    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-12 space-y-8">
+      <!-- Slide 01 -->
+      <section class="slide-panel min-h-[85vh] rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12 flex flex-col justify-center">
+        <div class="inline-flex items-center gap-3 w-fit px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-8">
+          Slide 01 · Cover
+        </div>
+        <h1 class="text-4xl md:text-7xl font-black leading-[1.03] text-white tracking-tight">
+          Building the Institutional Layer<br />
+          for <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400">Tokenized Asset Markets</span>
+        </h1>
+        <p class="mt-8 max-w-3xl text-lg md:text-2xl text-slate-300 leading-relaxed">
+          Settlr combines permissioned compliance, dual-signoff issuance, and atomic Delivery-vs-Payment settlement.
+          From fragmented legacy rails to global <strong class="text-white">T+0 finality</strong>.
+        </p>
+        <div class="mt-10 grid sm:grid-cols-3 gap-4 max-w-3xl">
+          <div class="rounded-2xl p-4 bg-white/5 border border-white/10">
+            <p class="text-3xl font-black text-sky-400">T+0</p>
+            <p class="text-xs uppercase tracking-wide text-slate-500 font-bold">Settlement Cycle</p>
+          </div>
+          <div class="rounded-2xl p-4 bg-white/5 border border-white/10">
+            <p class="text-3xl font-black text-indigo-400">DvP</p>
+            <p class="text-xs uppercase tracking-wide text-slate-500 font-bold">Atomic Exchange</p>
+          </div>
+          <div class="rounded-2xl p-4 bg-white/5 border border-white/10">
+            <p class="text-3xl font-black text-emerald-400">KYC</p>
+            <p class="text-xs uppercase tracking-wide text-slate-500 font-bold">On-chain Gating</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 02 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 02 · The Problem</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Legacy rails are slow, expensive, and opaque</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl p-6 bg-rose-950/20 border border-rose-500/20">
+            <h3 class="text-lg font-bold text-rose-300">Structural friction</h3>
+            <ul class="mt-4 space-y-2 text-sm text-slate-300">
+              <li>• T+2/T+3 settlement introduces counterparty risk</li>
+              <li>• Siloed clearing, custody, and transfer agents</li>
+              <li>• High reconciliation overhead and operational errors</li>
+              <li>• Limited global market hours and cross-border reach</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-6 bg-slate-800/40 border border-white/10">
+            <h3 class="text-lg font-bold text-white">Consequence</h3>
+            <p class="mt-4 text-sm text-slate-300 leading-relaxed">
+              Market participants over-collateralize, wait for finality, and absorb avoidable post-trade costs.
+              This suppresses liquidity and slows capital formation.
+            </p>
+            <div class="mt-6 rounded-xl p-4 bg-black/30 border border-white/10 text-xs font-mono text-slate-400">
+              Need: institutional-grade, programmable infrastructure with compliance embedded at protocol level.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 03 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 03 · Solution</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Settlr Platform Market</h2>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="rounded-2xl p-6 bg-emerald-950/20 border border-emerald-500/20">
+            <p class="text-emerald-300 font-bold">1) Onboarding & Compliance</p>
+            <p class="mt-2 text-sm text-slate-300">KYC-approved wallets are whitelisted in the Compliance Registry smart contract.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-indigo-950/20 border border-indigo-500/20">
+            <p class="text-indigo-300 font-bold">2) Asset-backed issuance</p>
+            <p class="mt-2 text-sm text-slate-300">Issuer requests minting; Custodian confirms collateral and authorizes 1:1 token mint.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-fuchsia-950/20 border border-fuchsia-500/20">
+            <p class="text-fuchsia-300 font-bold">3) Atomic secondary trading</p>
+            <p class="mt-2 text-sm text-slate-300">Cash and asset exchange simultaneously via DvP contract with immediate finality.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 04 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 04 · Why We Win</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Institutional control + Web3 execution</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <h3 class="text-xl font-bold text-white">Control layer</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>• Separation of duties (Issuer ≠ Custodian)</li>
+              <li>• Immutable audit trail for each approval/transfer</li>
+              <li>• Rule-based transfer restrictions (e.g., expired KYC)</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <h3 class="text-xl font-bold text-white">Execution layer</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>• MetaMask-native interaction model</li>
+              <li>• No-code operational UI for institutional desks</li>
+              <li>• Off-chain order workflows, on-chain settlement integrity</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 05 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 05 · Market Size</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">TAM / SAM / SOM</h2>
+        <div class="grid lg:grid-cols-3 gap-5">
+          <div class="rounded-2xl p-6 border border-sky-500/30 bg-sky-950/20">
+            <p class="text-xs uppercase tracking-wider font-bold text-sky-300">TAM</p>
+            <p class="mt-2 text-4xl font-black text-white">$16.2T</p>
+            <p class="mt-2 text-sm text-slate-300">Annual settlement flows in tokenizable institutional assets (equities, bonds, funds, commodities, carbon).</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-indigo-500/30 bg-indigo-950/20">
+            <p class="text-xs uppercase tracking-wider font-bold text-indigo-300">SAM</p>
+            <p class="mt-2 text-4xl font-black text-white">$1.4T</p>
+            <p class="mt-2 text-sm text-slate-300">Addressable in near-term target corridors and regulated counterparties.</p>
+          </div>
+          <div class="rounded-2xl p-6 border border-emerald-500/30 bg-emerald-950/20">
+            <p class="text-xs uppercase tracking-wider font-bold text-emerald-300">SOM (Year 5)</p>
+            <p class="mt-2 text-4xl font-black text-white">$12B</p>
+            <p class="mt-2 text-sm text-slate-300">Projected annual GMV captured via initial institutional beachheads.</p>
+          </div>
+        </div>
+        <p class="mt-5 text-xs text-slate-500 font-mono">Illustrative estimates for deck use; data-room model can be linked to your preferred assumptions.</p>
+      </section>
+
+      <!-- Slide 06 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 06 · Business Model</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Multi-stream revenue architecture</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl p-6 bg-emerald-950/20 border border-emerald-500/20">
+            <h3 class="text-lg font-bold text-emerald-300">Transaction revenues</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>• Primary issuance fee: <span class="font-mono">20–60 bps</span></li>
+              <li>• Secondary settlement fee: <span class="font-mono">4–12 bps</span></li>
+              <li>• Optional liquidity facilitation spread services</li>
+            </ul>
+          </div>
+          <div class="rounded-2xl p-6 bg-indigo-950/20 border border-indigo-500/20">
+            <h3 class="text-lg font-bold text-indigo-300">Platform revenues</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>• Compliance module subscription (B2B SaaS)</li>
+              <li>• API/data services for risk and post-trade analytics</li>
+              <li>• Premium integration and support packages</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 07 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 07 · Go-to-Market</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Focused, phased deployment strategy</h2>
+        <div class="grid md:grid-cols-3 gap-5">
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <p class="text-xs text-slate-500 font-mono">Phase 1</p>
+            <h3 class="mt-1 text-lg font-bold text-white">Pilot institutions</h3>
+            <p class="mt-2 text-sm text-slate-300">Launch with 2–3 anchor issuers and one custodian partner on limited asset classes.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <p class="text-xs text-slate-500 font-mono">Phase 2</p>
+            <h3 class="mt-1 text-lg font-bold text-white">Liquidity scaling</h3>
+            <p class="mt-2 text-sm text-slate-300">Add dealers and qualified investors, deepen secondary market volume.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <p class="text-xs text-slate-500 font-mono">Phase 3</p>
+            <h3 class="mt-1 text-lg font-bold text-white">Network effects</h3>
+            <p class="mt-2 text-sm text-slate-300">Expand geographies and instrument classes while reusing the same compliance core.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 08 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 08 · Technology & Defensibility</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Scientific moat in market microstructure</h2>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="rounded-2xl p-6 bg-fuchsia-950/20 border border-fuchsia-500/20">
+            <h3 class="text-lg font-bold text-fuchsia-300">Research-backed engine</h3>
+            <p class="mt-3 text-sm text-slate-300 leading-relaxed">
+              Inventory and pricing frameworks informed by econophysics and long-memory market behavior literature.
+            </p>
+          </div>
+          <div class="rounded-2xl p-6 bg-slate-800/40 border border-white/10">
+            <h3 class="text-lg font-bold text-white">Hard-to-copy stack</h3>
+            <ul class="mt-3 space-y-2 text-sm text-slate-300">
+              <li>• Compliance as a protocol primitive</li>
+              <li>• Atomic DvP settlement architecture</li>
+              <li>• End-to-end institutional workflow integration</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 09 -->
+      <section class="slide-panel rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 09 · Milestones & KPIs</div>
+        <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Execution plan (next 18 months)</h2>
+        <div class="grid lg:grid-cols-3 gap-5">
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <p class="text-xs font-mono text-slate-500">Q1–Q2</p>
+            <p class="text-white font-bold mt-1">Pilot readiness</p>
+            <p class="text-sm text-slate-300 mt-2">Contracts audited, compliance module live, 1st sandbox market.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <p class="text-xs font-mono text-slate-500">Q3–Q4</p>
+            <p class="text-white font-bold mt-1">Commercial launch</p>
+            <p class="text-sm text-slate-300 mt-2">First paid issuers, recurring platform fees, expansion to 2 asset classes.</p>
+          </div>
+          <div class="rounded-2xl p-6 bg-white/5 border border-white/10">
+            <p class="text-xs font-mono text-slate-500">Q5–Q6</p>
+            <p class="text-white font-bold mt-1">Scale-up</p>
+            <p class="text-sm text-slate-300 mt-2">Cross-border counterparties, deeper secondary liquidity, API monetization.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 10 -->
+      <section class="slide-panel min-h-[72vh] rounded-3xl border border-white/10 bg-slate-900/55 backdrop-blur-sm p-8 md:p-12 flex flex-col justify-center text-center">
+        <div class="text-xs text-slate-500 font-mono mb-4">Slide 10 · The Ask</div>
+        <h2 class="text-4xl md:text-6xl font-black text-white leading-tight">
+          From <span class="text-rose-400">post-trade friction</span><br />
+          to <span class="text-emerald-400">programmable market infrastructure</span>
+        </h2>
+        <p class="mt-6 text-lg text-slate-300 max-w-3xl mx-auto">
+          We are building the settlement and compliance backbone for institutional tokenized markets.
+          Let’s deploy the next generation of capital market rails.
+        </p>
+        <div class="mt-8 inline-flex items-center gap-2 mx-auto px-5 py-2 rounded-full border border-indigo-500/30 bg-indigo-500/10 text-indigo-300 text-xs font-bold uppercase tracking-wider">
+          Investor-ready deck · English version
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <style>
+    @keyframes blob {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(30px, -50px) scale(1.1); }
+      66% { transform: translate(-20px, 20px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .animate-blob { animation: blob 8s infinite; }
+    .animation-delay-2000 { animation-delay: 2s; }
+    .animation-delay-4000 { animation-delay: 4s; }
+  </style>
 </Layout>
