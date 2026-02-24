@@ -1,0 +1,208 @@
+---
+// MarketDiagramAnimated.astro
+---
+
+<div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-indigo-500/30 shadow-[0_0_50px_rgba(79,70,229,0.15)] bg-gradient-to-br from-slate-950 via-indigo-950/80 to-slate-900 group">
+  
+  <div class="absolute inset-0 z-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#6366f1 1px, transparent 1px); background-size: 30px 30px; animation: panGrid 20s linear infinite;"></div>
+
+  <div class="relative z-10 w-full aspect-[16/11] min-h-[500px]">
+    <svg viewBox="0 0 1100 650" class="w-full h-full drop-shadow-2xl" preserveAspectRatio="xMidYMid meet">
+      
+      <defs>
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap');
+          .tech-font { font-family: 'Space Grotesk', system-ui, sans-serif; }
+          
+          /* Animazioni per la piattaforma */
+          @keyframes dashMove { to { stroke-dashoffset: -20; } }
+          .animated-path { stroke-dasharray: 8 6; animation: dashMove 1s linear infinite; }
+        </style>
+
+        <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#60a5fa" />
+        </marker>
+        <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#a78bfa" />
+        </marker>
+
+        <filter id="glowHeavy" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <text x="40" y="60" fill="#e2e8f0" font-size="36" class="tech-font font-extrabold drop-shadow-lg">
+        Baseline Market Model
+      </text>
+      <text x="40" y="90" fill="#94a3b8" font-size="16" class="tech-font font-medium">
+        Tokenized execution & supervision stack
+      </text>
+
+      <path d="M 880 160 Q 700 180 600 290" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 880 160 Q 700 180 600 290" stroke="#38bdf8" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
+
+      <path d="M 220 520 Q 350 480 470 410" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 220 520 Q 350 480 470 410" stroke="#f472b6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
+
+      <path d="M 750 500 Q 680 480 620 420" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 750 500 Q 680 480 620 420" stroke="#a78bfa" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
+
+      <path d="M 830 520 L 930 520" stroke="#8b5cf6" stroke-width="3" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="6 4">
+        <animate attributeName="stroke-dashoffset" from="10" to="0" dur="0.5s" repeatCount="indefinite"/>
+      </path>
+      <path d="M 930 540 L 830 540" stroke="#10b981" stroke-width="3" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="6 4">
+        <animate attributeName="stroke-dashoffset" from="0" to="10" dur="0.5s" repeatCount="indefinite"/>
+      </path>
+
+
+      <circle r="6" fill="#38bdf8" filter="url(#glowHeavy)">
+        <animateMotion dur="3s" repeatCount="indefinite" path="M 880 160 Q 700 180 600 290" />
+      </circle>
+      <circle r="6" fill="#f472b6" filter="url(#glowHeavy)">
+        <animateMotion dur="2.5s" repeatCount="indefinite" path="M 220 520 Q 350 480 470 410" />
+      </circle>
+      <circle r="6" fill="#a78bfa" filter="url(#glowHeavy)">
+        <animateMotion dur="2s" repeatCount="indefinite" path="M 750 500 Q 680 480 620 420" />
+      </circle>
+
+
+      <foreignObject x="640" y="160" width="220" height="60" class="overflow-visible">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/80 border border-cyan-500/40 rounded-full px-3 py-1.5 shadow-lg backdrop-blur-md">
+          <span class="bg-cyan-500 text-slate-950 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mr-2 shrink-0">1</span>
+          <span class="text-slate-200 text-xs font-semibold leading-tight">Assets listed &amp; Oracle <br/> fixes reference prices</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="810" y="465" width="180" height="50" class="overflow-visible">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/80 border border-purple-500/40 rounded-full px-3 py-1.5 shadow-lg backdrop-blur-md">
+          <span class="bg-purple-500 text-slate-950 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mr-2 shrink-0">2</span>
+          <span class="text-slate-200 text-xs font-semibold">MM requests<br/>asset shares</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="580" y="470" width="190" height="70" class="overflow-visible">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex flex-col bg-slate-900/80 border border-indigo-500/40 rounded-xl px-3 py-2 shadow-lg backdrop-blur-md">
+          <div class="flex items-center mb-1">
+            <span class="bg-indigo-400 text-slate-950 font-black text-sm rounded-full w-5 h-5 flex items-center justify-center mr-2 shrink-0">3</span>
+            <span class="text-slate-200 text-xs font-semibold">MM quotes shares</span>
+          </div>
+          <div class="flex items-center opacity-80 pl-1">
+            <span class="text-indigo-300 font-bold text-[10px] mr-1">5.</span>
+            <span class="text-slate-400 text-[10px] leading-tight">Anyone can insert liquidity</span>
+          </div>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="260" y="430" width="160" height="50" class="overflow-visible">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/80 border border-pink-500/40 rounded-full px-3 py-1.5 shadow-lg backdrop-blur-md">
+          <span class="bg-pink-500 text-slate-950 font-black text-sm rounded-full w-6 h-6 flex items-center justify-center mr-2 shrink-0">4</span>
+          <span class="text-slate-200 text-xs font-semibold">Stable Coin</span>
+        </div>
+      </foreignObject>
+
+
+      <g transform="translate(860, 50)">
+        <g class="node-float">
+          <text x="50" y="-15" text-anchor="middle" fill="#38bdf8" font-size="20" class="tech-font font-bold drop-shadow-md">Real World Asset</text>
+          <rect x="25" y="10" width="50" height="60" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+          <line x1="25" y1="30" x2="75" y2="30" stroke="#38bdf8" stroke-width="2"/>
+          <line x1="25" y1="50" x2="75" y2="50" stroke="#38bdf8" stroke-width="2"/>
+          <circle cx="75" cy="70" r="16" fill="#0f172a" stroke="#10b981" stroke-width="3"/>
+          <path d="M 65 70 Q 75 80 85 70" fill="none" stroke="#10b981" stroke-width="2"/>
+          <line x1="75" y1="54" x2="75" y2="86" stroke="#10b981" stroke-width="2"/>
+        </g>
+      </g>
+
+      <g transform="translate(480, 280)">
+        <g class="node-float-delay">
+          <text x="80" y="-20" text-anchor="middle" fill="#e2e8f0" font-size="24" class="tech-font font-extrabold" filter="url(#glowHeavy)">T+0 Trading Platform</text>
+          
+          <rect x="0" y="0" width="160" height="110" rx="12" fill="#0f172a" stroke="#6366f1" stroke-width="3" filter="drop-shadow(0 10px 15px rgba(99,102,241,0.3))"/>
+          
+          <rect x="0" y="0" width="160" height="24" rx="12" fill="#1e293b"/>
+          <rect x="0" y="12" width="160" height="12" fill="#1e293b"/>
+          <circle cx="15" cy="12" r="4" fill="#ef4444"/>
+          <circle cx="30" cy="12" r="4" fill="#eab308"/>
+          <circle cx="45" cy="12" r="4" fill="#22c55e"/>
+          
+          <text x="145" y="16" text-anchor="end" fill="#ef4444" font-size="10" class="tech-font font-bold">
+            <animate attributeName="opacity" values="1;0.2;1" dur="1.5s" repeatCount="indefinite"/>
+            LIVE
+          </text>
+
+          <g transform="translate(10, 35)">
+            <rect x="0" y="0" width="60" height="6" rx="3" fill="#34d399">
+              <animate attributeName="width" values="60;90;40;60" dur="3s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="0" y="15" width="80" height="6" rx="3" fill="#34d399">
+              <animate attributeName="width" values="80;50;100;80" dur="4s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="0" y="30" width="45" height="6" rx="3" fill="#f43f5e">
+              <animate attributeName="width" values="45;70;30;45" dur="2.5s" repeatCount="indefinite"/>
+            </rect>
+            <rect x="0" y="45" width="100" height="6" rx="3" fill="#f43f5e">
+              <animate attributeName="width" values="100;60;110;100" dur="3.5s" repeatCount="indefinite"/>
+            </rect>
+          </g>
+
+          <path d="M 80 80 L 100 60 L 120 75 L 140 40" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linejoin="round">
+            <animate attributeName="stroke-dasharray" values="0,100;100,0" dur="5s" repeatCount="indefinite"/>
+          </path>
+        </g>
+      </g>
+
+      <g transform="translate(140, 480)">
+        <g class="node-float">
+          <text x="40" y="-15" text-anchor="middle" fill="#f472b6" font-size="20" class="tech-font font-bold drop-shadow-md"><tspan x="40" dy="-10">Whitelisted</tspan> <tspan x="40" dy="18">Investor</tspan></text>
+          <circle cx="40" cy="20" r="14" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+          <path d="M 15 60 C 15 40 65 40 65 60" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+          <path d="M 55 45 L 75 45 L 75 60 C 75 70 65 80 65 80 C 65 80 55 70 55 60 Z" fill="#1e293b" stroke="#f472b6" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M 60 60 L 65 65 L 72 53" fill="none" stroke="#f472b6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+      </g>
+
+      <g transform="translate(750, 480)">
+        <g class="node-float-delay">
+          <text x="40" y="-15" text-anchor="middle" fill="#a78bfa" font-size="20" class="tech-font font-bold drop-shadow-md">Maker</text>
+          <circle cx="40" cy="20" r="14" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+          <path d="M 15 60 C 15 40 65 40 65 60" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="65" cy="55" r="10" fill="#1e293b" stroke="#a78bfa" stroke-width="2"/>
+          <path d="M 65 49 L 65 61 M 59 55 L 71 55 M 61 51 L 69 59 M 61 59 L 69 51" stroke="#a78bfa" stroke-width="2" stroke-linecap="round"/>
+        </g>
+      </g>
+
+      <g transform="translate(950, 480)">
+        <g class="node-float">
+          <text x="45" y="-15" text-anchor="middle" fill="#34d399" font-size="20" class="tech-font font-bold drop-shadow-md">Custodian</text>
+          <polygon points="45,0 5,25 85,25" fill="#1e293b" stroke="#cbd5e1" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="15" y="25" width="10" height="35" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+          <rect x="39" y="25" width="12" height="35" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+          <rect x="65" y="25" width="10" height="35" fill="none" stroke="#cbd5e1" stroke-width="3"/>
+          <rect x="5" y="60" width="80" height="10" fill="#1e293b" stroke="#cbd5e1" stroke-width="3"/>
+          <circle cx="45" cy="42" r="4" fill="#10b981"/>
+        </g>
+      </g>
+
+    </svg>
+  </div>
+</div>
+
+<style>
+  /* Movimento della griglia di sfondo */
+  @keyframes panGrid {
+    0% { background-position: 0 0; }
+    100% { background-position: 30px 30px; }
+  }
+
+  /* Effetto galleggiamento */
+  .node-float { animation: floatNode 6s ease-in-out infinite; }
+  .node-float-delay { animation: floatNode 6s ease-in-out infinite 3s; }
+  @keyframes floatNode {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+</style>

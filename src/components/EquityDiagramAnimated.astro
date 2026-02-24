@@ -1,0 +1,264 @@
+---
+// EquityDiagramAnimated.astro
+---
+
+<div class="w-full max-w-5xl mx-auto border border-slate-200/60 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] rounded-2xl overflow-hidden font-sans bg-slate-50 relative group">
+  
+  {/* =========================================
+      SFONDO CREATIVO ANIMATO
+      ========================================= */}
+  {/* Gradiente di base */}
+  <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-blue-50 via-slate-50 to-purple-50 z-0"></div>
+  
+  {/* Griglia tecnica con sfumatura sui bordi */}
+  <div class="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] z-0" style="mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, #000 40%, transparent 100%);"></div>
+  
+  {/* Effetto Mesh Gradient Animato (Blob) */}
+  <div class="absolute top-0 -left-4 w-72 md:w-96 h-72 md:h-96 bg-blue-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob z-0 pointer-events-none"></div>
+  <div class="absolute top-0 -right-4 w-72 md:w-96 h-72 md:h-96 bg-purple-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000 z-0 pointer-events-none"></div>
+  <div class="absolute -bottom-8 left-1/3 w-72 md:w-96 h-72 md:h-96 bg-emerald-300/30 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000 z-0 pointer-events-none"></div>
+
+  {/* Contenitore aspect ratio 16:9 con background moderno */}
+  <div class="relative w-full aspect-[16/9] text-slate-700 overflow-hidden p-2 z-10">
+
+    {/* T+0 Badge */}
+    <div class="absolute top-[8%] left-[50%] -translate-x-1/2 border border-red-500/80 px-3 py-1 bg-white/90 backdrop-blur-md z-20 shadow-md rounded-full animate-fade-in-down">
+      <span class="font-bold text-red-600 text-[10px] md:text-xs tracking-tight uppercase">Potentially T+0</span>
+    </div>
+
+    {/* Box ON CHAIN */}
+    <div class="absolute top-[30%] left-[30%] w-[50%] h-[65%] border-[2px] border-dashed border-emerald-400/60 bg-emerald-50/20 backdrop-blur-[2px] rounded-2xl z-0 animate-fade-in delay-5 transition-all duration-500 hover:bg-emerald-50/40 hover:border-emerald-400">
+      <span class="absolute bottom-2 left-4 font-black tracking-widest text-emerald-700/80 text-[10px] md:text-xs">ON CHAIN</span>
+    </div>
+
+    {/* =========================================
+        LIVELLO SVG (Frecce animate)
+        ========================================= */}
+    <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none" viewBox="0 0 1000 562.5" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="blue-flow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3b82f6; stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#6366f1; stop-opacity:1" />
+        </linearGradient>
+        <marker id="arrow-head" markerWidth="4" markerHeight="4" refX="3" refY="2" orient="auto">
+          <path d="M0,0 L0,4 L4,2 z" fill="url(#blue-flow-grad)" />
+        </marker>
+        <marker id="arrow-tail" markerWidth="4" markerHeight="4" refX="1" refY="2" orient="auto">
+          <path d="M4,0 L4,4 L0,2 z" fill="url(#blue-flow-grad)" />
+        </marker>
+      </defs>
+
+      {/* Custodian <-> Issuers */}
+      <path d="M 240 190 Q 220 250 240 280" class="flow-anim delay-1" marker-end="url(#arrow-head)" marker-start="url(#arrow-tail)" />
+      {/* Investor -> Issuers */}
+      <path d="M 160 450 Q 190 430 230 350" class="flow-anim delay-2" marker-end="url(#arrow-head)" />
+      {/* Issuers -> Green Wallet */}
+      <path d="M 300 320 Q 350 300 400 315" class="flow-anim delay-3" marker-end="url(#arrow-head)" />
+      {/* Green Wallet -> Blockchain Core */}
+      <path d="M 470 320 Q 500 310 535 335" class="flow-anim delay-3" marker-end="url(#arrow-head)" />
+      {/* Red Wallet -> Blockchain Core */}
+      <path d="M 580 440 Q 575 410 565 385" class="flow-anim delay-4" marker-end="url(#arrow-head)" />
+      {/* Oracles -> Blockchain Core */}
+      <path d="M 780 200 Q 700 230 600 315" class="flow-anim delay-4" marker-end="url(#arrow-head)" />
+      {/* Blockchain Core -> Institutions */}
+      <path d="M 610 360 Q 700 400 780 425" class="flow-anim delay-5" marker-end="url(#arrow-head)" />
+    </svg>
+
+    {/* =========================================
+        NODI HTML - DIMENSIONI EXTRA-COMPATTE
+        ========================================= */}
+    
+    {/* Custodian */}
+    <div class="node-hover animate-fade-in-up delay-0 absolute top-[26%] left-[25%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+      <span class="text-red-600 font-extrabold text-[10px] md:text-xs mb-0.5 drop-shadow-sm">Custodian</span>
+      <div class="w-8 h-8 md:w-10 md:h-10 text-slate-700 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl p-1 md:p-1.5 border border-white relative">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-full h-full stroke-slate-700">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 2L2 7l10 5 10-5-10-5z" fill="#f8fafc"/>
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 22V12" />
+        </svg>
+        <div class="absolute inset-0 flex items-center justify-center mt-2">
+           <svg viewBox="0 0 24 24" fill="currentColor" class="w-3 h-3 md:w-4 md:h-4 text-blue-600 drop-shadow-md">
+             <path fill-rule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clip-rule="evenodd" />
+           </svg>
+        </div>
+      </div>
+    </div>
+
+    {/* Issuers */}
+    <div class="node-hover animate-fade-in-up delay-1 absolute top-[55%] left-[25%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+      <span class="text-red-600 font-extrabold text-[10px] md:text-xs mb-0.5 drop-shadow-sm">Issuers</span>
+      <div class="w-8 h-8 md:w-10 md:h-10 text-slate-700 shadow-lg bg-white/80 backdrop-blur-sm rounded-xl p-1 md:p-1.5 border border-white">
+        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full"><path d="M4 10h3v7H4v-7zm6 0h3v7h-3v-7zm6 0h3v7h-3v-7zM2 22h20v-3H2v3zm10-19L2 8h20L12 3z"/></svg>
+      </div>
+    </div>
+
+    {/* Document Icon & Text */}
+    <div class="animate-fade-in delay-1 absolute top-[40%] left-[21%] -translate-x-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-0.5 rounded-md z-10 shadow-sm border border-slate-200">
+      <svg class="w-3 h-3 md:w-4 md:h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+    </div>
+    <div class="animate-fade-in delay-1 absolute top-[40%] left-[10%] -translate-x-1/2 -translate-y-1/2 text-center w-20 md:w-28 z-10">
+      <p class="font-semibold text-[8px] md:text-[9px] leading-tight text-slate-700 bg-white/80 backdrop-blur-sm px-1.5 py-1 rounded shadow-sm border border-slate-100">Purchase actual shares<br/>Asks for minting</p>
+    </div>
+
+    {/* Investor */}
+    <div class="node-hover animate-fade-in-up delay-2 absolute top-[85%] left-[14%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10">
+      <span class="text-red-600 font-extrabold text-[10px] md:text-xs mb-0.5 drop-shadow-sm">Investor</span>
+      <div class="w-7 h-7 md:w-9 md:h-9 text-slate-700 shadow-lg bg-white/80 backdrop-blur-sm rounded-full p-1 border border-white">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+      </div>
+    </div>
+    <div class="animate-fade-in delay-2 absolute top-[82%] left-[27%] -translate-x-1/2 -translate-y-1/2 text-center w-16 md:w-20 z-10">
+      <p class="font-semibold text-[8px] md:text-[9px] leading-tight text-slate-700 bg-white/80 backdrop-blur-sm px-1.5 py-1 rounded shadow-sm border border-slate-100">KYC/AML<br/>Fiat Transfer</p>
+    </div>
+
+    {/* Custodian Auth Text */}
+    <div class="animate-fade-in delay-3 absolute top-[38%] left-[37%] -translate-x-1/2 -translate-y-1/2 text-center w-24 md:w-28 z-10">
+      <p class="font-semibold text-[8px] md:text-[9px] leading-tight text-slate-700 bg-white/80 backdrop-blur-sm px-1.5 py-1 rounded shadow-sm border border-slate-100">Custodian<br/>authorizes mint<br/><span class="text-red-600 font-bold">1:1 Backed</span></p>
+    </div>
+
+    {/* Green Wallet */}
+    <div class="node-hover animate-fade-in-up delay-3 absolute top-[57%] left-[44%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 w-24 md:w-28">
+      <div class="w-8 h-5 md:w-10 md:h-6 bg-emerald-500 rounded-md relative shadow-lg mt-1 border border-emerald-400">
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-3 h-1 md:w-4 md:h-1.5 border border-emerald-500 rounded-t-sm bg-emerald-400"></div>
+      </div>
+      <span class="text-emerald-700 font-bold text-[8px] md:text-[9px] leading-tight mt-1 text-center bg-white/80 backdrop-blur-sm px-1 py-0.5 rounded shadow-sm">Investor's<br/>whitelisted wallet</span>
+    </div>
+
+    {/* Blockchain Core */}
+    <div class="node-hover animate-fade-in-up delay-3 absolute top-[60%] left-[56%] -translate-x-1/2 -translate-y-1/2 z-10 w-12 h-12 md:w-16 md:h-16">
+      <div class="relative w-full h-full flex items-center justify-center hub-pulse rounded-full bg-blue-50/50 backdrop-blur-md border border-blue-200 shadow-[0_0_30px_rgba(59,130,246,0.2)]">
+        <div class="absolute inset-0 bg-blue-400/20 blur-lg rounded-full animate-pulse"></div>
+        <svg viewBox="0 0 24 24" class="w-[75%] h-[75%] z-10 text-blue-600 drop-shadow-md" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" fill="#eff6ff"></path>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+          <line x1="12" y1="22.08" x2="12" y2="12"></line>
+          <circle cx="12" cy="12" r="2" class="fill-blue-600 animate-pulse" />
+          <circle cx="21" cy="8" r="1.5" class="fill-blue-500" />
+          <circle cx="3" cy="8" r="1.5" class="fill-blue-500" />
+          <circle cx="12" cy="22" r="1.5" class="fill-blue-500" />
+          <circle cx="12" cy="2" r="1.5" class="fill-blue-500" />
+          <circle cx="21" cy="16" r="1.5" class="fill-blue-500" />
+          <circle cx="3" cy="16" r="1.5" class="fill-blue-500" />
+        </svg>
+      </div>
+    </div>
+
+    {/* Red Wallet */}
+    <div class="node-hover animate-fade-in-up delay-4 absolute top-[85%] left-[58%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 w-24 md:w-28">
+      <div class="w-7 h-7 md:w-9 md:h-9 bg-[#e04444] rounded-b-md rounded-t-sm relative shadow-lg mt-1 border border-[#c83232]">
+        <div class="absolute top-0 left-0 w-full h-2 md:h-2.5 bg-[#f0c863] rounded-t-sm"></div>
+        <div class="absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-1 md:w-3 md:h-1.5 border border-[#dca843] rounded-t-sm bg-[#fce096]"></div>
+      </div>
+      <span class="text-red-700 font-bold text-[8px] md:text-[9px] leading-tight mt-1 text-center bg-white/80 backdrop-blur-sm px-1 py-0.5 rounded shadow-sm">Other whitelisted<br/>wallets</span>
+    </div>
+
+    {/* Oracles */}
+    <div class="node-hover animate-fade-in-up delay-4 absolute top-[30%] left-[85%] -translate-x-1/2 -translate-y-1/2 flex items-center z-10 gap-1 md:gap-1.5">
+      <span class="font-extrabold text-slate-700 text-[10px] md:text-xs drop-shadow-sm">Oracles</span>
+      <div class="w-8 h-8 md:w-10 md:h-10 border-l-[3px] border-b-[3px] border-indigo-500 relative shadow-lg bg-white/80 backdrop-blur-sm p-0.5 rounded-sm">
+        <svg viewBox="0 0 100 100" class="absolute bottom-1 left-1 w-[85%] h-[85%] stroke-indigo-600 fill-none stroke-[8]">
+          <path d="M0,80 L30,40 L60,60 L95,15" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon points="85,15 100,10 95,25" class="fill-indigo-600 stroke-none" />
+        </svg>
+      </div>
+    </div>
+
+    {/* Institutions / Clearing House */}
+    <div class="node-hover animate-fade-in-up delay-5 absolute top-[80%] left-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-10 w-28 md:w-36">
+      <span class="text-red-600 font-bold text-[8px] md:text-[9px] leading-tight mb-1 text-center bg-white/80 backdrop-blur-sm px-1.5 py-1 rounded shadow-sm z-10 border border-slate-100">All institutions look<br/>at the same truth</span>
+      <div class="w-12 h-12 md:w-16 md:h-16 text-slate-600 relative shadow-lg bg-white/80 backdrop-blur-sm rounded-xl p-2 border border-white flex flex-col justify-end">
+         <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-[70%] text-slate-700">
+           <path d="M4 21h4V9H4v12zm1-10h2v2H5v-2zm0 4h2v2H5v-2z" class="opacity-80"/>
+           <path d="M10 21h6V3h-6v18zm2-14h2v2h-2V7zm0 4h2v2h-2v-2zm0 4h2v2h-2v-2z" />
+           <path d="M18 21h4v-8h-4v8zm1-5h2v2h-2v-2z" class="opacity-80"/>
+         </svg>
+         <div class="w-full h-1 mt-1 bg-indigo-500 rounded-full relative">
+            <div class="absolute inset-0 bg-indigo-400 blur-[2px] rounded-full animate-pulse"></div>
+         </div>
+         <div class="flex justify-between w-[80%] mx-auto mt-1">
+            <div class="w-1 h-1 bg-indigo-600 rounded-full"></div>
+            <div class="w-1 h-1 bg-indigo-600 rounded-full"></div>
+            <div class="w-1 h-1 bg-indigo-600 rounded-full"></div>
+         </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<style>
+  /* --- Nuove Animazioni CSS per i Blob --- */
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  /* --- Animazioni CSS Esistenti --- */
+  .flow-anim {
+    stroke: url(#blue-flow-grad);
+    fill: none;
+    stroke-width: 2.5;
+    stroke-dasharray: 6 6;
+    stroke-linecap: round;
+    animation: flowAnimation 15s linear infinite;
+    opacity: 0.9;
+  }
+
+  @keyframes flowAnimation {
+    from { stroke-dashoffset: 140; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .hub-pulse {
+    animation: pulse-blue 3s infinite;
+  }
+
+  @keyframes pulse-blue {
+    0% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+    70% { box-shadow: 0 0 0 15px rgba(99, 102, 241, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
+  }
+
+  .node-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .node-hover:hover {
+    transform: translate(-50%, -54%) scale(1.08);
+    filter: brightness(1.05);
+  }
+
+  .animate-fade-in-up { animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards; }
+  .animate-fade-in-down { animation: fadeInDown 0.8s cubic-bezier(0.4, 0, 0.2, 1) backwards; }
+  .animate-fade-in { animation: fadeIn 1.2s ease-out backwards; }
+
+  .delay-0 { animation-delay: 0.1s; }
+  .delay-1 { animation-delay: 0.3s; }
+  .delay-2 { animation-delay: 0.5s; }
+  .delay-3 { animation-delay: 0.7s; }
+  .delay-4 { animation-delay: 0.9s; }
+  .delay-5 { animation-delay: 1.1s; }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translate(-50%, -40%) scale(0.95); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translate(-50%, -60%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+</style>

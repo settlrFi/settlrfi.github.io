@@ -1,5 +1,9 @@
 ---
 import Layout from '../../layouts/BaseLayout.astro';
+// Assicurati di sistemare il percorso corretto per importare il componente!
+import EquityDiagramAnimated from '../../components/EquityDiagramAnimated.astro'; 
+import MarketDiagramAnimated from '../../components/MarketDiagramAnimated.astro';
+import FundDiagramAnimated from '../../components/FundDiagramAnimated.astro';
 
 const slides = [
   {
@@ -61,13 +65,13 @@ const slides = [
 
 <Layout title="Use Cases | Settlr" description="Before/After use cases adapted from presentation slides.">
   <main class="max-w-[92rem] mx-auto px-4 lg:px-8 py-10">
-      <section class="intro reveal rounded-3xl border border-white/10 bg-slate-900/60 backdrop-blur-sm p-10 md:p-14 mb-8">
-        <p class="text-indigo-300/90 uppercase tracking-[0.26em] text-xs font-mono">Extracted from pres.pdf</p>
+      <section class="intro reveal rounded-3xl border border-white/10 bg-slate-900/60 backdrop-blur-sm p-8 md:p-12 mb-8">
+        <p class="text-indigo-300/90 uppercase tracking-[0.26em] text-xs font-mono">Use Cases · Visual Edition</p>
         <h1 class="text-4xl md:text-6xl font-black text-white mt-3">Before vs After: Use Cases</h1>
-        <p class="text-slate-300 mt-4 max-w-4xl text-lg">Each slide combines: (1) before/after points distilled from your presentation, (2) animated schematics mirroring the original flows (without text clutter), and (3) architectural smartness highlights.</p>
+        <p class="text-slate-300 mt-4 max-w-4xl text-lg">A presentation-style page inspired by Investor Deck: colorful themes, animated cards, visual references, and concise before/after narratives.</p>
       </section>
 
-      <div class="stack-wrap">
+      <div class="stack-wrap mt-6">
         {slides.map((s, i) => (
           <section id={s.id} class={`slide sticky-slide reveal ${s.themeClass}`} style={`--i:${i};`}>
             <div class="slide-bg"></div>
@@ -83,65 +87,61 @@ const slides = [
               <p class="subtitle">{s.subtitle}</p>
 
               <div class="grid lg:grid-cols-12 gap-5 mt-7 items-stretch">
-                <div class="lg:col-span-4 space-y-5">
-                  <div class="panel before">
+                <div class="lg:col-span-4 space-y-4">
+                  <div class="panel mini before-card">
                     <h3>Before</h3>
-                    <ul>{s.before.map((b) => <li>• {b}</li>)}</ul>
+                    <div class="micro-stack">
+                      {s.before.map((b) => <p>{b}</p>)}
+                    </div>
                   </div>
-                  <div class="panel after">
+                  <div class="panel mini after-card">
                     <h3>After</h3>
-                    <ul>{s.after.map((a) => <li>• {a}</li>)}</ul>
+                    <div class="micro-stack">
+                      {s.after.map((a) => <p>{a}</p>)}
+                    </div>
                   </div>
                 </div>
 
                 <div class="lg:col-span-8 panel slide-under flex flex-col relative overflow-hidden bg-slate-900/90">
-                  <h3 class="absolute top-4 left-4 z-30 bg-slate-900/80 px-2 py-1 rounded">Slide Reference Schematic</h3>
-                  
-                  {/* --- FUNDS SLIDE REFERENCE (pres-34) --- */}
+                  <h3 class="absolute top-4 left-4 z-30 bg-slate-900/80 px-2 py-1 rounded">Visual Reference</h3>
+
                   {s.id === 'funds' && (
-                    <div class="w-full h-full min-h-[450px] flex items-center justify-center p-4 pt-12 bg-slate-950/70">
-                      <img
-                        src="/img/use_cases/pres-34.jpg"
-                        alt="Reference slide for Tokenized Funds"
-                        class="w-full h-auto max-h-[620px] object-contain rounded-md border border-white/10"
-                        loading="lazy"
-                        decoding="async"
-                      />
+                    <div class={`slide-visual visual-${s.id} w-full h-full min-h-[450px]`}>
+                      <div class="w-full relative z-10 px-4 md:px-8">
+                        <FundDiagramAnimated />
+                      </div>
+                      <span class="orb orb-a"></span><span class="orb orb-b"></span>
+                      <span class="sticker s1">⏱️ T+1</span>
+                      <span class="sticker s2">✅ On-chain checks</span>
+                      <span class="sticker s3">💸 Faster settlement</span>
                     </div>
                   )}
 
-                  {/* --- EQUITY SLIDE REFERENCE (pres-18) --- */}
                   {s.id === 'equity' && (
-                    <div class="w-full h-full min-h-[450px] flex items-center justify-center p-4 pt-12 bg-slate-950/70">
-                      <img
-                        src="/img/use_cases/pres-18.jpg"
-                        alt="Reference slide for Tokenized Equities"
-                        class="w-full h-auto max-h-[620px] object-contain rounded-md border border-white/10"
-                        loading="lazy"
-                        decoding="async"
-                      />
+                    <div class={`slide-visual visual-${s.id} w-full h-full min-h-[450px]`}>
+                      
+                      <div class="w-full relative z-10 px-4 md:px-8">
+                        <EquityDiagramAnimated />
+                      </div>
+                      
+                      <span class="orb orb-a"></span><span class="orb orb-b"></span>
+                      <span class="sticker s1">⚡ T+0 ready</span>
+                      <span class="sticker s2">🔄 Atomic DvP</span>
+                      <span class="sticker s3">🧩 Shared truth</span>
                     </div>
                   )}
 
-                  {/* --- MARKET SLIDE REFERENCE (pres-40) --- */}
                   {s.id === 'market' && (
-                    <div class="w-full h-full min-h-[450px] flex items-center justify-center p-4 pt-12 bg-slate-950/70">
-                      <img
-                        src="/img/use_cases/pres-40.jpg"
-                        alt="Reference slide for Tokenized Market Infrastructure"
-                        class="w-full h-auto max-h-[620px] object-contain rounded-md border border-white/10"
-                        loading="lazy"
-                        decoding="async"
-                      />
+                    <div class={`slide-visual visual-${s.id} w-full h-full min-h-[450px]`}>
+                      <div class="w-full relative z-10 px-4 md:px-8">
+                        <MarketDiagramAnimated />
+                      </div>
+                      <span class="orb orb-a"></span><span class="orb orb-b"></span>
+                      <span class="sticker s1">🛡️ Embedded controls</span>
+                      <span class="sticker s2">📈 Oracle-fed</span>
+                      <span class="sticker s3">👁️ Real-time oversight</span>
                     </div>
                   )}
-                </div>
-              </div>
-
-              <div class="smart-callout mt-5 flex items-start gap-3">
-                <div class="text-xl">💡</div>
-                <div>
-                  <strong class="text-white">Architecture Smartness:</strong> {s.smartness}
                 </div>
               </div>
             </div>
@@ -151,44 +151,43 @@ const slides = [
   </main>
 
   <style>
-    /* --- Theming per Use Case --- */
-    .theme-funds .slide-bg { background: linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,58,138,0.4) 50%, rgba(194,65,12,0.15) 100%); }
-    .theme-equity .slide-bg { background: radial-gradient(circle at 50% 50%, rgba(6,78,59,0.2) 0%, rgba(15,23,42,1) 80%); }
-    .theme-market .slide-bg { background: linear-gradient(to bottom right, rgba(15,23,42,1), rgba(76,29,149,0.3)); }
+    .theme-funds .slide-bg {
+      background-image:
+        radial-gradient(circle at 10% 10%, rgba(251,146,60,.30), transparent 35%),
+        linear-gradient(135deg, rgba(15,23,42,.52) 0%, rgba(23,37,84,.48) 45%, rgba(124,45,18,.40) 100%),
+        url('/img/use_cases/bg-funds.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .theme-equity .slide-bg {
+      background-image:
+        radial-gradient(circle at 80% 10%, rgba(16,185,129,.28), transparent 35%),
+        linear-gradient(135deg, rgba(5,46,43,.50) 0%, rgba(15,23,42,.50) 50%, rgba(30,58,138,.40) 100%),
+        url('/img/use_cases/bg-equity.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    .theme-market .slide-bg {
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(168,85,247,.26), transparent 35%),
+        linear-gradient(135deg, rgba(15,23,42,.50) 0%, rgba(49,46,129,.50) 45%, rgba(15,118,110,.40) 100%),
+        url('/img/use_cases/bg-market.jpg');
+      background-size: cover;
+      background-position: center;
+    }
 
-    /* --- Animations --- */
-    @keyframes inUp { from { opacity: 0; transform: translateY(26px) scale(.995);} to { opacity: 1; transform: translateY(0) scale(1);} }
-    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(249,115,22,.5); } 50% { box-shadow: 0 0 20px rgba(249,115,22,1); } }
-    @keyframes spinSlow { 100% { transform: rotate(360deg); } }
-    @keyframes dashMove { to { stroke-dashoffset: -24; } }
-    @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* Schema Specific Classes */
-    .box-node { display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; z-index: 10; font-family: 'JetBrains Mono', monospace; }
-    .pulse-border { animation: pulseGlow 2s infinite; }
-    .blockchain-spin { animation: spinSlow 20s linear infinite; display: inline-block; transform-origin: center; line-height: 1;}
-    .flow-path { stroke-dasharray: 6; animation: dashMove 1.5s linear infinite; }
-    .flow-path-reverse { stroke-dasharray: 6; animation: dashMove 1.5s linear infinite reverse; }
-    .glow-text { text-shadow: 0 0 8px rgba(220,38,38,0.8); }
-    .draw-path { animation: dashMove 1.5s linear infinite reverse; }
-    .draw-path-reverse { animation: dashMove 1.5s linear infinite; }
-    .pulse-glow { animation: pulseGlow 2s infinite; box-shadow: 0 0 15px rgba(99,102,241,0.6); }
-    .hover-bounce { animation: floatY 3.5s ease-in-out infinite; }
-
-    /* Layout & Cards */
     .sticky-slide {
       position: relative; min-height: auto; margin-bottom: 4.5rem;
       border-radius: 26px; border: 1px solid rgba(255,255,255,.12); overflow: hidden;
       background: rgba(15,23,42,.85); box-shadow: 0 20px 60px rgba(0,0,0,.35);
-      z-index: auto; animation: inUp .6s ease both;
+      z-index: auto;
     }
-    .sticky-slide:not(:first-child) { margin-top: 0; }
     
-    .slide-bg { position: absolute; inset: 0; opacity: 1; transition: background 0.5s ease; }
-    .slide-veil { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(2,6,23,.95), rgba(2,6,23,.7), rgba(2,6,23,.85)); pointer-events: none;}
+    .slide-bg { position: absolute; inset: 0; opacity: 1; transition: background 0.5s ease; filter: saturate(1.1) contrast(1.05); }
+    .slide-veil { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(2,6,23,.62), rgba(2,6,23,.42), rgba(2,6,23,.56)); pointer-events: none;}
 
     .slide-content { position: relative; z-index: 2; padding: 2.5rem; }
     .topbar { display: flex; gap: .7rem; align-items: center; margin-bottom: .6rem; }
@@ -199,29 +198,59 @@ const slides = [
     .subtitle { color: #cbd5e1; margin-top: .5rem; font-size: 1.05rem; }
 
     .panel { border-radius: 18px; border: 1px solid rgba(148,163,184,.25); background: rgba(2,6,23,.55); padding: 1.25rem; backdrop-filter: blur(8px); }
-    .panel h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .18em; margin-bottom: 1rem; font-weight: 800; }
-    .before h3 { color: #fda4af; } .after h3 { color: #86efac; } .slide-under h3 { color: #c7d2fe; }
-    .panel ul { display: grid; gap: .6rem; font-size: .95rem; color: #e2e8f0; line-height: 1.5; }
-    
-    .smart-callout { margin-top: 1rem; border: 1px solid rgba(16,185,129,.32); background: rgba(16,185,129,.12); color: #d1fae5; border-radius: 14px; padding: 1rem 1.2rem; font-size: 0.95rem; line-height: 1.5; }
+    .panel h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .18em; margin-bottom: .7rem; font-weight: 800; color: #93c5fd; }
 
-    @media (max-width: 1279px) {
-      .sticky-slide { margin-bottom: 3rem; }
+    .mini { background: rgba(2,6,23,.62); }
+    .micro-stack { display: grid; gap: .55rem; }
+    .micro-stack p { color: #e2e8f0; font-weight: 600; font-size: .92rem; line-height: 1.4; }
+    .slide-visual { position: relative; display: flex; align-items: center; justify-content: center; padding: 1rem; padding-top: 3rem; background: rgba(2,6,23,.45); overflow: hidden; }
+    .slide-img { width: 100%; height: auto; max-height: 620px; object-fit: contain; border-radius: 10px; border: 1px solid rgba(255,255,255,.12); }
+    .sticker { position: absolute; z-index: 20; font-size: .75rem; font-weight: 700; color: #fff; background: rgba(15,23,42,.82); border: 1px solid rgba(148,163,184,.35); border-radius: 999px; padding: .35rem .65rem; backdrop-filter: blur(3px); animation: bob 3.2s ease-in-out infinite; }
+    .s1 { top: 3.6rem; left: 1.1rem; }
+    .s2 { top: 3.6rem; right: 1.1rem; animation-delay: .7s; }
+    .s3 { bottom: 1.1rem; left: 50%; transform: translateX(-50%); animation-delay: 1.2s; }
+
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+    .s3 { animation-name: bobCenter; }
+    @keyframes bobCenter { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-4px); } }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    .sticky-slide { animation: cardIn .55s ease both; }
+    @keyframes cardIn { from { opacity: .0; transform: translateY(12px) scale(.99);} to { opacity: 1; transform: translateY(0) scale(1);} }
+
+    .slide-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(255,255,255,.14), transparent 40%);
+      mix-blend-mode: screen;
+      pointer-events: none;
     }
-    @media (max-width: 1024px) {
-      .slide-under { min-height: 500px; overflow-x: auto; }
-    }
-    @media (max-width: 768px) {
-      .sticky-slide { margin-bottom: 1.5rem; }
-      .slide-content { padding: 1.5rem; }
-      .title { font-size: 1.75rem; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
+
+    .visual-funds { background: linear-gradient(160deg, rgba(194,65,12,.18), rgba(30,58,138,.2)); }
+    .visual-equity { background: linear-gradient(160deg, rgba(16,185,129,.18), rgba(30,64,175,.2)); }
+    .visual-market { background: linear-gradient(160deg, rgba(124,58,237,.18), rgba(13,148,136,.2)); }
+
+    .orb { position:absolute; width:14px; height:14px; border-radius:999px; filter: blur(.2px); opacity:.8; pointer-events:none; }
+    .orb-a { top: 4.2rem; left: 40%; background:#60a5fa; animation: driftA 5.5s ease-in-out infinite; }
+    .orb-b { bottom: 1.8rem; right: 35%; background:#f472b6; animation: driftB 6.2s ease-in-out infinite; }
+    @keyframes driftA { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(14px,-8px) scale(1.18);} }
+    @keyframes driftB { 0%,100% { transform: translate(0,0) scale(1);} 50% { transform: translate(-12px,10px) scale(.9);} }
+
+    .slide-img { box-shadow: 0 10px 30px rgba(0,0,0,.35); transition: transform .45s ease, box-shadow .45s ease; }
+    .slide-visual:hover .slide-img { transform: scale(1.015); box-shadow: 0 14px 36px rgba(0,0,0,.45); }
+
+    .mini { border-color: rgba(129,140,248,.28); transition: transform .22s ease, box-shadow .22s ease; }
+    .mini:hover { transform: scale(1.03); box-shadow: 0 12px 28px rgba(0,0,0,.28); }
+    .before-card { background: linear-gradient(160deg, rgba(190,24,93,.24), rgba(51,65,85,.65)); border-color: rgba(244,114,182,.45); }
+    .after-card { background: linear-gradient(160deg, rgba(22,163,74,.24), rgba(30,58,138,.55)); border-color: rgba(74,222,128,.45); }
+    .before-card h3 { color: #f9a8d4; }
+    .after-card h3 { color: #86efac; }
+    .micro-stack p { background: rgba(15,23,42,.45); border: 1px solid rgba(148,163,184,.22); padding: .5rem .6rem; border-radius: .65rem; }
+
   </style>
-
   <script>
     const io = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -229,7 +258,7 @@ const slides = [
         entry.target.classList.add('is-visible');
         io.unobserve(entry.target);
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
   </script>
 </Layout>
