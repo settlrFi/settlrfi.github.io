@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/BaseLayout.astro';
+
+const slides = [
+  {
+    id: 'funds',
+    tag: 'Use Case 01 · Funds',
+    title: 'Tokenized Funds',
+    subtitle: 'From T+3-style operational friction to programmable subscription/redemption rails',
+    themeClass: 'theme-funds',
+    before: [
+      'T+3-oriented workflow with controls concentrated in off-chain checks',
+      'Depositary / transfer-agent controls executed manually across fragmented systems',
+      'Reconciliation-heavy process before final investor position update'
+    ],
+    after: [
+      'T+1-style operational model with pre-encoded eligibility and rule validation',
+      'Whitelisted wallet logic + policy checks executed directly in smart contracts',
+      'Faster investor position finalization with shared on-chain event trace'
+    ],
+    smartness: 'Control logic is moved from manual coordination to deterministic execution steps.'
+  },
+  {
+    id: 'equity',
+    tag: 'Use Case 02 · Equity',
+    title: 'Tokenized Equities',
+    subtitle: 'From siloed post-trade rails to coordinated atomic settlement logic',
+    themeClass: 'theme-equity',
+    before: [
+      'Trade execution, clearing, and settlement handled on separate ledgers',
+      'CCP/CSD reconciliation chain introduces latency and operational overhead',
+      'Ownership and entitlement updates propagate through intermediary layers'
+    ],
+    after: [
+      'Shared transaction state aligns execution, transfer, and ownership updates',
+      'Atomic DvP flow reduces break risk between cash and asset legs',
+      'Faster entitlement logic for voting/dividends via programmable registry'
+    ],
+    smartness: 'Transaction-level controls are built into the architecture instead of being patched after execution.'
+  },
+  {
+    id: 'market',
+    tag: 'Use Case 03 · Market Ecosystem',
+    title: 'Tokenized Market Infrastructure',
+    subtitle: 'From disconnected controls to one integrated execution + supervision stack',
+    themeClass: 'theme-market',
+    before: [
+      'Risk, compliance, and surveillance distributed across different systems',
+      'Onboarding and market-access controls duplicated by each participant',
+      'Supervisory visibility delayed by fragmented reporting channels'
+    ],
+    after: [
+      'Permissioned matching with embedded risk/compliance checks in execution path',
+      'Oracle-fed controls synchronize valuation and market policy enforcement',
+      'Unified audit layer improves operational and supervisory transparency'
+    ],
+    smartness: 'Market microstructure, controls, and reporting operate as one coherent programmable system.'
+  }
+];
+---
+
+<Layout title="Use Cases | Settlr" description="Before/After use cases adapted from presentation slides.">
+  <main class="max-w-[92rem] mx-auto px-4 lg:px-8 py-10">
+      <section class="intro reveal rounded-3xl border border-white/10 bg-slate-900/60 backdrop-blur-sm p-10 md:p-14 mb-8">
+        <p class="text-indigo-300/90 uppercase tracking-[0.26em] text-xs font-mono">Extracted from pres.pdf</p>
+        <h1 class="text-4xl md:text-6xl font-black text-white mt-3">Before vs After: Use Cases</h1>
+        <p class="text-slate-300 mt-4 max-w-4xl text-lg">Each slide combines: (1) before/after points distilled from your presentation, (2) animated schematics mirroring the original flows (without text clutter), and (3) architectural smartness highlights.</p>
+      </section>
+
+      <div class="stack-wrap">
+        {slides.map((s, i) => (
+          <section id={s.id} class={`slide sticky-slide reveal ${s.themeClass}`} style={`--i:${i};`}>
+            <div class="slide-bg"></div>
+            <div class="slide-veil"></div>
+
+            <div class="slide-content">
+              <div class="topbar">
+                <span class="tag">{s.tag}</span>
+                <span class="chip-arch">Smart Architecture</span>
+              </div>
+
+              <h2 class="title">{s.title}</h2>
+              <p class="subtitle">{s.subtitle}</p>
+
+              <div class="grid lg:grid-cols-12 gap-5 mt-7 items-stretch">
+                <div class="lg:col-span-4 space-y-5">
+                  <div class="panel before">
+                    <h3>Before</h3>
+                    <ul>{s.before.map((b) => <li>• {b}</li>)}</ul>
+                  </div>
+                  <div class="panel after">
+                    <h3>After</h3>
+                    <ul>{s.after.map((a) => <li>• {a}</li>)}</ul>
+                  </div>
+                </div>
+
+                <div class="lg:col-span-8 panel slide-under flex flex-col relative overflow-hidden bg-slate-900/90">
+                  <h3 class="absolute top-4 left-4 z-30 bg-slate-900/80 px-2 py-1 rounded">Slide Reference Schematic</h3>
+                  
+                  {/* --- FUNDS SLIDE REFERENCE (pres-34) --- */}
+                  {s.id === 'funds' && (
+                    <div class="w-full h-full min-h-[450px] flex items-center justify-center p-4 pt-12 bg-slate-950/70">
+                      <img
+                        src="/img/use_cases/pres-34.jpg"
+                        alt="Reference slide for Tokenized Funds"
+                        class="w-full h-auto max-h-[620px] object-contain rounded-md border border-white/10"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  )}
+
+                  {/* --- EQUITY SLIDE REFERENCE (pres-18) --- */}
+                  {s.id === 'equity' && (
+                    <div class="w-full h-full min-h-[450px] flex items-center justify-center p-4 pt-12 bg-slate-950/70">
+                      <img
+                        src="/img/use_cases/pres-18.jpg"
+                        alt="Reference slide for Tokenized Equities"
+                        class="w-full h-auto max-h-[620px] object-contain rounded-md border border-white/10"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  )}
+
+                  {/* --- MARKET SLIDE REFERENCE (pres-40) --- */}
+                  {s.id === 'market' && (
+                    <div class="w-full h-full min-h-[450px] flex items-center justify-center p-4 pt-12 bg-slate-950/70">
+                      <img
+                        src="/img/use_cases/pres-40.jpg"
+                        alt="Reference slide for Tokenized Market Infrastructure"
+                        class="w-full h-auto max-h-[620px] object-contain rounded-md border border-white/10"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div class="smart-callout mt-5 flex items-start gap-3">
+                <div class="text-xl">💡</div>
+                <div>
+                  <strong class="text-white">Architecture Smartness:</strong> {s.smartness}
+                </div>
+              </div>
+            </div>
+          </section>
+        ))}
+      </div>
+  </main>
+
+  <style>
+    /* --- Theming per Use Case --- */
+    .theme-funds .slide-bg { background: linear-gradient(135deg, rgba(15,23,42,1) 0%, rgba(30,58,138,0.4) 50%, rgba(194,65,12,0.15) 100%); }
+    .theme-equity .slide-bg { background: radial-gradient(circle at 50% 50%, rgba(6,78,59,0.2) 0%, rgba(15,23,42,1) 80%); }
+    .theme-market .slide-bg { background: linear-gradient(to bottom right, rgba(15,23,42,1), rgba(76,29,149,0.3)); }
+
+    /* --- Animations --- */
+    @keyframes inUp { from { opacity: 0; transform: translateY(26px) scale(.995);} to { opacity: 1; transform: translateY(0) scale(1);} }
+    @keyframes pulseGlow { 0%, 100% { box-shadow: 0 0 10px rgba(249,115,22,.5); } 50% { box-shadow: 0 0 20px rgba(249,115,22,1); } }
+    @keyframes spinSlow { 100% { transform: rotate(360deg); } }
+    @keyframes dashMove { to { stroke-dashoffset: -24; } }
+    @keyframes floatY { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Schema Specific Classes */
+    .box-node { display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; z-index: 10; font-family: 'JetBrains Mono', monospace; }
+    .pulse-border { animation: pulseGlow 2s infinite; }
+    .blockchain-spin { animation: spinSlow 20s linear infinite; display: inline-block; transform-origin: center; line-height: 1;}
+    .flow-path { stroke-dasharray: 6; animation: dashMove 1.5s linear infinite; }
+    .flow-path-reverse { stroke-dasharray: 6; animation: dashMove 1.5s linear infinite reverse; }
+    .glow-text { text-shadow: 0 0 8px rgba(220,38,38,0.8); }
+    .draw-path { animation: dashMove 1.5s linear infinite reverse; }
+    .draw-path-reverse { animation: dashMove 1.5s linear infinite; }
+    .pulse-glow { animation: pulseGlow 2s infinite; box-shadow: 0 0 15px rgba(99,102,241,0.6); }
+    .hover-bounce { animation: floatY 3.5s ease-in-out infinite; }
+
+    /* Layout & Cards */
+    .sticky-slide {
+      position: relative; min-height: auto; margin-bottom: 4.5rem;
+      border-radius: 26px; border: 1px solid rgba(255,255,255,.12); overflow: hidden;
+      background: rgba(15,23,42,.85); box-shadow: 0 20px 60px rgba(0,0,0,.35);
+      z-index: auto; animation: inUp .6s ease both;
+    }
+    .sticky-slide:not(:first-child) { margin-top: 0; }
+    
+    .slide-bg { position: absolute; inset: 0; opacity: 1; transition: background 0.5s ease; }
+    .slide-veil { position: absolute; inset: 0; background: linear-gradient(115deg, rgba(2,6,23,.95), rgba(2,6,23,.7), rgba(2,6,23,.85)); pointer-events: none;}
+
+    .slide-content { position: relative; z-index: 2; padding: 2.5rem; }
+    .topbar { display: flex; gap: .7rem; align-items: center; margin-bottom: .6rem; }
+    .tag { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #a5b4fc; font-family: 'JetBrains Mono', monospace; }
+    .chip-arch { font-size: 11px; border: 1px solid rgba(52,211,153,.35); color: #6ee7b7; background: rgba(16,185,129,.14); padding: .28rem .55rem; border-radius: 999px; }
+
+    .title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 900; color: #fff; line-height: 1.05; }
+    .subtitle { color: #cbd5e1; margin-top: .5rem; font-size: 1.05rem; }
+
+    .panel { border-radius: 18px; border: 1px solid rgba(148,163,184,.25); background: rgba(2,6,23,.55); padding: 1.25rem; backdrop-filter: blur(8px); }
+    .panel h3 { font-size: 11px; text-transform: uppercase; letter-spacing: .18em; margin-bottom: 1rem; font-weight: 800; }
+    .before h3 { color: #fda4af; } .after h3 { color: #86efac; } .slide-under h3 { color: #c7d2fe; }
+    .panel ul { display: grid; gap: .6rem; font-size: .95rem; color: #e2e8f0; line-height: 1.5; }
+    
+    .smart-callout { margin-top: 1rem; border: 1px solid rgba(16,185,129,.32); background: rgba(16,185,129,.12); color: #d1fae5; border-radius: 14px; padding: 1rem 1.2rem; font-size: 0.95rem; line-height: 1.5; }
+
+    @media (max-width: 1279px) {
+      .sticky-slide { margin-bottom: 3rem; }
+    }
+    @media (max-width: 1024px) {
+      .slide-under { min-height: 500px; overflow-x: auto; }
+    }
+    @media (max-width: 768px) {
+      .sticky-slide { margin-bottom: 1.5rem; }
+      .slide-content { padding: 1.5rem; }
+      .title { font-size: 1.75rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+  </script>
+</Layout>
