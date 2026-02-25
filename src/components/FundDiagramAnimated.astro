@@ -1,330 +1,306 @@
 ---
-// FundDiagramAnimated.astro
+// FundDiagramDarkAnimated.astro
 ---
 
-<div class="w-full max-w-5xl mx-auto border border-slate-700 shadow-2xl rounded-2xl overflow-hidden custom-font bg-slate-900">
-  {/* Import Google Font */}
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-    .custom-font { font-family: 'Space Grotesk', sans-serif; }
-  </style>
+<div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-slate-700/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 group">
+  
+  {/* Sfondo Griglia Animata Cyber */}
+  <div class="absolute inset-0 z-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#38bdf8 1px, transparent 1px); background-size: 30px 30px; animation: panGrid 20s linear infinite;"></div>
 
-  {/* Contenitore Principale */}
-  <div class="relative w-full aspect-[16/10] text-slate-100 overflow-hidden z-0 font-sans">
-    
-    {/* --- BACKGROUND EFFECTS --- */}
-    <div class="absolute inset-0 z-[-3] opacity-30" style="background-image: radial-gradient(#334155 1px, transparent 1px); background-size: 24px 24px;"></div>
-    
-    {/* Glow On-Chain (Top) */}
-    <div class="absolute top-[-20%] left-[20%] w-[60%] h-[50%] bg-orange-600/10 rounded-full mix-blend-screen filter blur-[100px] animate-pulse-slow"></div>
-    {/* Glow Off-Chain (Bottom) */}
-    <div class="absolute bottom-[-20%] left-[20%] w-[60%] h-[50%] bg-blue-600/10 rounded-full mix-blend-screen filter blur-[100px] animate-pulse-slow" style="animation-delay: 2s;"></div>
-
-    {/* --- ZONE DIVIDERS --- */}
-    <div class="absolute top-[8%] left-[4%] right-[4%] bottom-[52%] border-2 border-dashed border-orange-500/30 rounded-t-xl bg-gradient-to-b from-orange-500/5 to-transparent z-[-1]">
-      <span class="absolute top-2 left-4 text-orange-400/80 font-bold uppercase tracking-widest text-xs md:text-sm flex items-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
-        On-chain
-      </span>
-    </div>
-
-    <div class="absolute top-[52%] left-[4%] right-[4%] bottom-[4%] border-2 border-dashed border-blue-500/30 rounded-b-xl bg-gradient-to-t from-blue-500/5 to-transparent z-[-1]">
-      <span class="absolute bottom-2 left-4 text-blue-400/80 font-bold uppercase tracking-widest text-xs md:text-sm flex items-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
-        Off-chain
-      </span>
-    </div>
-
-    {/* Center Red Badge (T+1) */}
-    <div class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-40 bg-red-600/90 text-white font-bold px-6 py-2 rounded-full text-sm md:text-base border border-red-400 shadow-[0_0_25px_rgba(220,38,38,0.6)] backdrop-blur-sm animate-pulse-fast">
-      This is a T+1 process.
-    </div>
-
-    {/* =========================================
-        SVG LAYER (Enhanced Connections)
-        ========================================= */}
-    <svg class="absolute inset-0 w-full h-full z-0 pointer-events-none drop-shadow-lg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+  {/* Contenitore SVG */}
+  <div class="relative z-10 w-full aspect-[16/11] min-h-[650px]">
+    <svg viewBox="0 0 1100 700" class="w-full h-full drop-shadow-2xl" preserveAspectRatio="xMidYMid meet">
+      
       <defs>
-        <marker id="arrow-orange" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
-          <path d="M0,0 L0,5 L5,2.5 z" fill="#f97316" />
-        </marker>
-        <marker id="arrow-blue" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
-          <path d="M0,0 L0,5 L5,2.5 z" fill="#3b82f6" />
-        </marker>
-        <marker id="arrow-mixed" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto">
-          <path d="M0,0 L0,5 L5,2.5 z" fill="#8b5cf6" />
-        </marker>
-        
-        {/* Gradients for cross-chain lines */}
-        <linearGradient id="grad-b-o" x1="0%" y1="100%" x2="0%" y2="0%">
+        <style>
+          @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&display=swap');
+          .tech-font { font-family: 'Space Grotesk', system-ui, sans-serif; }
+          
+          /* Animazione Path */
+          @keyframes dashMove { to { stroke-dashoffset: -24; } }
+          @keyframes dashMoveRev { to { stroke-dashoffset: 24; } }
+          .animated-path { stroke-dasharray: 8 6; animation: dashMove 1s linear infinite; }
+          .animated-path-rev { stroke-dasharray: 8 6; animation: dashMoveRev 1s linear infinite; }
+          
+          /* Effetto Chip HUD */
+          .hud-chip { transition: all 0.3s ease; cursor: pointer; }
+          .hud-chip:hover { transform: scale(1.05); filter: brightness(1.3); }
+        </style>
+
+        {/* Gradienti per connessioni verticali (On-chain vs Off-chain) */}
+        <linearGradient id="grad-blue-orange" x1="0%" y1="100%" x2="0%" y2="0%">
           <stop offset="0%" stop-color="#3b82f6" />
           <stop offset="100%" stop-color="#f97316" />
         </linearGradient>
-        <linearGradient id="grad-o-b" x1="0%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id="grad-orange-blue" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" stop-color="#f97316" />
           <stop offset="100%" stop-color="#3b82f6" />
         </linearGradient>
+
+        <linearGradient id="bg-zone-orange" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f97316" stop-opacity="0.08" />
+          <stop offset="100%" stop-color="#f97316" stop-opacity="0.01" />
+        </linearGradient>
+        <linearGradient id="bg-zone-blue" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.08" />
+          <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.01" />
+        </linearGradient>
+
+        {/* Frecce */}
+        <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316" />
+        </marker>
+        <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+        </marker>
+        <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4" />
+        </marker>
+
+        {/* Filtri Glow */}
+        <filter id="glowHeavy" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="glowSubtle" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
       </defs>
 
-      {/* --- TRACKS (Background faint lines) --- */}
-      <path d="M 150 450 L 150 210" class="flow-track" stroke="url(#grad-b-o)" />
-      <path d="M 500 210 L 500 450" class="flow-track" stroke="url(#grad-o-b)" />
-      
-      <path d="M 180 180 L 470 180" class="flow-track orange-track" />
-      <path d="M 530 180 L 820 180" class="flow-track orange-track" />
-      
-      <path d="M 180 480 L 470 480" class="flow-track blue-track" />
-      <path d="M 530 480 L 820 480" class="flow-track blue-track" />
-      
-      <path d="M 850 450 L 850 210" class="flow-track mixed-track" />
+      {/* ================= INTESTAZIONE ================= */}
+      <text x="40" y="60" fill="#e2e8f0" font-size="34" class="tech-font font-extrabold drop-shadow-lg">Fund Process Model</text>
+      <text x="40" y="90" fill="#94a3b8" font-size="16" class="tech-font font-medium">Tokenized workflow vs Traditional execution</text>
 
 
-      {/* --- DATA PACKETS (Animated dashed glowing lines) --- */}
-      {/* Cross-chain lines */}
-      <path d="M 150 450 L 150 210" class="data-stream delay-1" stroke="url(#grad-b-o)" marker-end="url(#arrow-orange)" />
-      <path d="M 500 210 L 500 450" class="data-stream delay-4" stroke="url(#grad-o-b)" marker-end="url(#arrow-blue)" />
+      {/* ================= AREE (ZONES) ================= */}
+      {/* On-Chain Zone */}
+      <rect x="40" y="120" width="1020" height="220" rx="16" fill="url(#bg-zone-orange)" stroke="#f97316" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
+      <g transform="translate(60, 145)">
+        <rect x="0" y="-15" width="100" height="24" rx="4" fill="#f97316" fill-opacity="0.2" stroke="#f97316" stroke-width="1"/>
+        <text x="50" y="1" fill="#fdba74" font-size="12" font-weight="bold" text-anchor="middle" class="tech-font tracking-widest uppercase">ON-CHAIN</text>
+      </g>
 
-      {/* On-chain lines (Orange) */}
-      <path d="M 180 180 L 470 180" class="data-stream orange-glow delay-2" marker-end="url(#arrow-orange)" />
-      <path d="M 530 180 L 820 180" class="data-stream orange-glow delay-3" marker-end="url(#arrow-orange)" />
+      {/* Off-Chain Zone */}
+      <rect x="40" y="400" width="1020" height="220" rx="16" fill="url(#bg-zone-blue)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
+      <g transform="translate(60, 600)">
+        <rect x="0" y="-15" width="100" height="24" rx="4" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+        <text x="50" y="1" fill="#93c5fd" font-size="12" font-weight="bold" text-anchor="middle" class="tech-font tracking-widest uppercase">OFF-CHAIN</text>
+      </g>
 
-      {/* Off-chain lines (Blue) */}
-      <path d="M 180 480 L 470 480" class="data-stream blue-glow delay-2" marker-end="url(#arrow-blue)" />
-      <path d="M 530 480 L 820 480" class="data-stream blue-glow delay-5" marker-end="url(#arrow-blue)" />
+
+      {/* ================= COLLEGAMENTI (PATHS) ================= */}
       
-      {/* Depo <-> Depo Sync line */}
-      <path d="M 850 450 L 850 210" class="data-stream mixed-glow delay-6 sync-reverse" marker-end="url(#arrow-mixed)" marker-start="url(#arrow-mixed)"/>
+      {/* 1. Orizzontali On-Chain (Orange) */}
+      <path d="M 230 230 L 520 230" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 230 230 L 520 230" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
+
+      <path d="M 580 230 L 870 230" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 580 230 L 870 230" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
+
+      {/* 2. Orizzontali Off-Chain (Blue) */}
+      <path d="M 230 510 L 520 510" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 230 510 L 520 510" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
+
+      <path d="M 580 510 L 870 510" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 580 510 L 870 510" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
+
+      {/* 3. Verticali Cross-Chain (Gradienti) */}
+      {/* Investor -> Issuer */}
+      <path d="M 200 480 L 200 260" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 200 480 L 200 260" stroke="url(#grad-blue-orange)" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
+      
+      {/* Platform -> Custodian Off */}
+      <path d="M 550 260 L 550 480" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 550 260 L 550 480" stroke="url(#grad-orange-blue)" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
+
+      {/* Custodian On <-> NAV Setter */}
+      <path d="M 900 480 L 900 260" stroke="#475569" stroke-width="4" fill="none" class="animated-path-rev"/>
+      <path d="M 900 480 L 900 260" stroke="#06b6d4" stroke-width="2" stroke-dasharray="6 6" fill="none" marker-end="url(#arrowCyan)" marker-start="url(#arrowCyan)" opacity="0.8"/>
+
+
+      {/* ================= PARTICELLE ANIMATE ================= */}
+      <circle r="5" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 230 230 L 520 230" /></circle>
+      <circle r="5" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 580 230 L 870 230" /></circle>
+      <circle r="5" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 230 510 L 520 510" /></circle>
+      <circle r="5" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 580 510 L 870 510" /></circle>
+      <circle r="5" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2s" repeatCount="indefinite" path="M 200 480 L 200 260" /></circle>
+      <circle r="5" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2s" repeatCount="indefinite" path="M 550 260 L 550 480" /></circle>
+      <circle r="5" fill="#06b6d4" filter="url(#glowSubtle)"><animateMotion dur="3s" repeatCount="indefinite" path="M 900 480 L 900 260" /></circle>
+
+
+      {/* ================= CHIPS HUD (Etichette Tecniche) ================= */}
+      
+      {/* Chips On-Chain (Orange) */}
+      <foreignObject x="300" y="170" width="160" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2 shadow-[0_0_5px_#f97316]"></div>
+          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Order Validation</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="270" y="260" width="140" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2"></div>
+          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Workflow Logic</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="640" y="170" width="180" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2"></div>
+          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Transfer Agency Rules</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="670" y="260" width="140" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2"></div>
+          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Fee Logic</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="830" y="150" width="160" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-amber-400/60 rounded-full px-3 py-1 shadow-[0_0_15px_rgba(251,191,36,0.5)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-amber-400 mr-2 animate-pulse"></div>
+          <span class="text-amber-200 text-[11px] font-bold whitespace-nowrap">On-Chain Registry</span>
+        </div>
+      </foreignObject>
+
+      {/* Chips Off-Chain (Blue/Cyan) */}
+      <foreignObject x="290" y="450" width="120" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2 shadow-[0_0_5px_#3b82f6]"></div>
+          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">KYC/AML</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="320" y="530" width="160" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">Cash Movements</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="450" y="430" width="120" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">Controls</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="650" y="450" width="180" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
+          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">Custodian Oversight</span>
+        </div>
+      </foreignObject>
+
+      <foreignObject x="700" y="540" width="160" height="40" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-cyan-400/60 rounded-full px-3 py-1 shadow-[0_0_15px_rgba(34,211,238,0.5)] backdrop-blur-md">
+          <div class="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></div>
+          <span class="text-cyan-200 text-[11px] font-bold whitespace-nowrap">NAV Calculation</span>
+        </div>
+      </foreignObject>
+
+
+      {/* ================= NODI VETTORIALI (SVG PURI) ================= */}
+      
+      {/* 1. Issuer (On-chain) */}
+      <g transform="translate(200, 230)">
+        <g class="node-float">
+          <polygon points="0,-30 35,0 0,30 -35,0" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowSubtle)"/>
+          <line x1="0" y1="-15" x2="0" y2="15" stroke="#f97316" stroke-width="2"/>
+          <line x1="-15" y1="0" x2="15" y2="0" stroke="#f97316" stroke-width="2"/>
+          <circle cx="0" cy="0" r="4" fill="#fdba74"/>
+          <text x="0" y="55" text-anchor="middle" fill="#fdba74" font-size="16" class="tech-font font-bold">Issuer</text>
+        </g>
+      </g>
+
+      {/* 2. Platform (On-chain) */}
+      <g transform="translate(550, 230)">
+        <g class="node-float-delay">
+          <rect x="-40" y="-30" width="80" height="60" rx="8" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowHeavy)"/>
+          <rect x="-30" y="-20" width="60" height="40" rx="4" fill="none" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <circle cx="-15" cy="0" r="3" fill="#f97316"/>
+          <circle cx="0" cy="0" r="3" fill="#f97316"/>
+          <circle cx="15" cy="0" r="3" fill="#f97316"/>
+          <text x="0" y="55" text-anchor="middle" fill="#fdba74" font-size="18" class="tech-font font-bold">Platform</text>
+        </g>
+      </g>
+
+      {/* 3. Custodian (On-chain) */}
+      <g transform="translate(900, 230)">
+        <g class="node-float">
+          <path d="M -30,-20 L 30,-20 L 40,0 L 30,20 L -30,20 L -40,0 Z" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowSubtle)"/>
+          <circle cx="0" cy="0" r="10" fill="none" stroke="#fdba74" stroke-width="2"/>
+          <circle cx="0" cy="0" r="4" fill="#f97316"/>
+          <text x="0" y="55" text-anchor="middle" fill="#fdba74" font-size="16" class="tech-font font-bold">Custodian</text>
+        </g>
+      </g>
+
+      {/* 4. Investor (Off-chain) */}
+      <g transform="translate(200, 510)">
+        <g class="node-float-delay">
+          <circle cx="0" cy="0" r="30" fill="#0f172a" stroke="#3b82f6" stroke-width="3" filter="url(#glowSubtle)"/>
+          <circle cx="0" cy="-6" r="6" fill="none" stroke="#93c5fd" stroke-width="2"/>
+          <path d="M -12,12 C -12,4 12,4 12,12" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
+          <text x="0" y="55" text-anchor="middle" fill="#93c5fd" font-size="16" class="tech-font font-bold">Investor</text>
+        </g>
+      </g>
+
+      {/* 5. Custodian (Off-chain) */}
+      <g transform="translate(550, 510)">
+        <g class="node-float">
+          <rect x="-35" y="-25" width="70" height="50" rx="4" fill="#0f172a" stroke="#3b82f6" stroke-width="3" filter="url(#glowSubtle)"/>
+          <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#60a5fa" stroke-width="2"/>
+          <line x1="-20" y1="0" x2="20" y2="0" stroke="#60a5fa" stroke-width="2"/>
+          <line x1="-20" y1="10" x2="0" y2="10" stroke="#60a5fa" stroke-width="2"/>
+          <text x="0" y="55" text-anchor="middle" fill="#93c5fd" font-size="16" class="tech-font font-bold">Custodian</text>
+        </g>
+      </g>
+
+      {/* 6. NAV Setter (Off-chain) */}
+      <g transform="translate(900, 510)">
+        <g class="node-float-delay">
+          <polygon points="0,30 30,-10 -30,-10" fill="#0f172a" stroke="#06b6d4" stroke-width="3" filter="url(#glowSubtle)"/>
+          <polygon points="0,15 15,-5 -15,-5" fill="#06b6d4" opacity="0.5"/>
+          <line x1="-20" y1="-20" x2="20" y2="-20" stroke="#22d3ee" stroke-width="2"/>
+          <text x="0" y="55" text-anchor="middle" fill="#67e8f9" font-size="16" class="tech-font font-bold">NAV Setter</text>
+        </g>
+      </g>
+
+
+      {/* ================= BADGE CENTRALE T+1 ================= */}
+      <g transform="translate(550, 360)">
+        <rect x="-110" y="-20" width="220" height="40" rx="20" fill="#4c0519" stroke="#f43f5e" stroke-width="2" filter="url(#glowHeavy)"/>
+        <text x="0" y="5" fill="#fecdd3" font-size="14" font-weight="bold" text-anchor="middle" class="tech-font tracking-wide">
+          <tspan fill="#f43f5e">⚠</tspan> THIS IS A T+1 PROCESS
+        </text>
+      </g>
+
     </svg>
-
-    {/* =========================================
-        MAIN NODES (PURE ICONS)
-        ========================================= */}
-    
-    {/* 1. Distributor (D) - On Chain */}
-    <div class="node absolute top-[30%] left-[15%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-orange-400 drop-shadow-[0_0_15px_rgba(249,115,22,0.8)] z-20">
-      <svg class="w-10 h-10 md:w-14 md:h-14 mb-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
-        <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-        <line x1="12" y1="22.08" x2="12" y2="12"></line>
-      </svg>
-      <span class="font-bold text-sm md:text-base tracking-widest text-orange-100">Issuer</span>
-    </div>
-
-    {/* 2. Platform (TP) - On Chain */}
-    <div class="node absolute top-[30%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-orange-400 drop-shadow-[0_0_15px_rgba(249,115,22,0.8)] z-20">
-      
-      <svg class="w-12 h-12 md:w-16 md:h-16 mb-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-        <line x1="8" y1="21" x2="16" y2="21"></line>
-        <line x1="12" y1="17" x2="12" y2="21"></line>
-        <path d="M6 8h.01"></path><path d="M10 8h.01"></path><path d="M14 8h.01"></path>
-      </svg>
-      <span class="font-bold text-lg md:text-xl tracking-widest text-orange-100">Platform</span>
-    </div>
-
-    {/* 3. Depo - On Chain */}
-    <div class="node absolute top-[30%] left-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-orange-400 drop-shadow-[0_0_15px_rgba(249,115,22,0.8)] z-20">
-      <svg class="w-10 h-10 md:w-14 md:h-14 mb-2 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-      </svg>
-      <span class="font-bold text-sm md:text-base tracking-widest text-orange-100">Custodian</span>
-    </div>
-
-    {/* 4. Investor (I) - Off Chain */}
-    <div class="node absolute top-[80%] left-[15%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] z-20">
-      <svg class="w-10 h-10 md:w-14 md:h-14 mb-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-        <circle cx="12" cy="7" r="4"></circle>
-      </svg>
-      <span class="font-bold text-sm md:text-base tracking-widest text-blue-100">Investor</span>
-    </div>
-
-    {/* 5. Depo - Off Chain */}
-    <div class="node absolute top-[80%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] z-20">
-      <svg class="w-12 h-12 md:w-16 md:h-16 mb-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="4" y="10" width="16" height="12" rx="2" ry="2"></rect>
-        <polygon points="12 2 20 10 4 10"></polygon>
-        <line x1="12" y1="14" x2="12" y2="18"></line>
-        <line x1="8" y1="14" x2="8" y2="18"></line>
-        <line x1="16" y1="14" x2="16" y2="18"></line>
-      </svg>
-      <span class="font-bold text-sm md:text-base tracking-widest text-blue-100">Custodian</span>
-    </div>
-
-    {/* 6. Gestore / NAV - Off Chain */}
-    <div class="node absolute top-[80%] left-[85%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center text-blue-400 drop-shadow-[0_0_15px_rgba(59,130,246,0.8)] z-20">
-      <div class="absolute -left-6 top-1/2 -translate-y-1/2 bg-cyan-900/80 text-cyan-300 text-[10px] md:text-xs px-2 py-0.5 rounded border border-cyan-500 z-30 shadow-[0_0_10px_rgba(6,182,212,0.5)] backdrop-blur-sm">NAV</div>
-      <svg class="w-10 h-10 md:w-14 md:h-14 mb-2 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-      </svg>
-      <span class="font-bold text-sm md:text-base tracking-widest text-blue-100">NAV Setter</span>
-    </div>
-
-
-    {/* =========================================
-        LIST ITEMS AS FLOATING DATA CHIPS
-        ========================================= */}
-    
-    <div class="feature-chip border-orange-500/50 bg-orange-950/80 text-orange-200 absolute top-[16%] left-[32%] -translate-x-1/2 delay-1">
-      <div class="dot bg-orange-500"></div> Order Validation <span class="text-[7px] text-orange-400/80">(min/max)</span>
-    </div>
-    <div class="feature-chip border-orange-500/50 bg-orange-950/80 text-orange-200 absolute top-[40%] left-[32%] -translate-x-1/2 delay-2">
-      <div class="dot bg-orange-500"></div> Workflow Logic
-    </div>
-    <div class="feature-chip border-orange-500/50 bg-orange-950/80 text-orange-200 absolute top-[16%] left-[68%] -translate-x-1/2 delay-3">
-      <div class="dot bg-orange-500"></div> Transfer Agency Rules
-    </div>
-    <div class="feature-chip border-orange-500/50 bg-orange-950/80 text-orange-200 absolute top-[40%] left-[68%] -translate-x-1/2 delay-4">
-      <div class="dot bg-orange-500"></div> Fee Logic
-    </div>
-    <div class="feature-chip border-orange-500/50 bg-orange-950/80 text-orange-200 absolute top-[15%] left-[90%] -translate-x-1/2 delay-5">
-      <div class="dot bg-orange-400 shadow-[0_0_8px_#fb923c]"></div> On-Chain Registry
-    </div>
-
-    <div class="feature-chip border-blue-500/50 bg-blue-950/80 text-blue-200 absolute top-[65%] left-[23%] -translate-x-1/2 delay-2">
-      <div class="dot bg-blue-500"></div> KYC/AML
-    </div>
-    <div class="feature-chip border-blue-500/50 bg-blue-950/80 text-blue-200 absolute top-[90%] left-[32%] -translate-x-1/2 delay-3">
-      <div class="dot bg-blue-500"></div> Cash Movements
-    </div>
-    <div class="feature-chip border-blue-500/50 bg-blue-950/80 text-blue-200 absolute top-[62%] left-[45%] -translate-x-1/2 delay-4">
-      <div class="dot bg-blue-500"></div> Controls
-    </div>
-    <div class="feature-chip border-blue-500/50 bg-blue-950/80 text-blue-200 absolute top-[65%] left-[68%] -translate-x-1/2 delay-5">
-      <div class="dot bg-blue-500"></div> Custodian Oversight
-    </div>
-    <div class="feature-chip border-cyan-500/50 bg-cyan-950/80 text-cyan-200 absolute top-[90%] left-[68%] -translate-x-1/2 delay-6">
-      <div class="dot bg-cyan-400 shadow-[0_0_8px_#22d3ee]"></div> NAV Calculation
-    </div>
-
   </div>
 </div>
 
 <style>
-  /* --- New Arrow Animations --- */
-  
-  /* The subtle background track */
-  .flow-track {
-    fill: none;
-    stroke-width: 2;
-    opacity: 0.15;
-    stroke-linecap: round;
-  }
-  .orange-track { stroke: #f97316; }
-  .blue-track { stroke: #3b82f6; }
-  .mixed-track { stroke: #8b5cf6; }
-
-  /* The bright animated data stream */
-  .data-stream {
-    fill: none;
-    stroke-width: 3;
-    stroke-dasharray: 12 24; /* Creates 'packets' of data */
-    stroke-linecap: round;
-    animation: streamFlow 3s linear infinite;
-  }
-  
-  .orange-glow { stroke: #fb923c; filter: drop-shadow(0 0 4px #fb923c); }
-  .blue-glow { stroke: #60a5fa; filter: drop-shadow(0 0 4px #60a5fa); }
-  .mixed-glow { stroke: #a78bfa; filter: drop-shadow(0 0 4px #a78bfa); }
-
-  @keyframes streamFlow {
-    from { stroke-dashoffset: 72; } /* Multiple of dasharray sum (12+24=36) */
-    to { stroke-dashoffset: 0; }
+  /* Movimento della griglia di sfondo */
+  @keyframes panGrid {
+    0% { background-position: 0 0; }
+    100% { background-position: 30px 30px; }
   }
 
-  /* Sync line goes both ways visually */
-  .sync-reverse {
-    stroke-dasharray: 8 16;
-    animation: streamFlowReverse 4s linear infinite;
+  /* Effetto galleggiamento per i nodi */
+  .node-float { animation: floatNode 6s ease-in-out infinite; }
+  .node-float-delay { animation: floatNode 6s ease-in-out infinite 3s; }
+  @keyframes floatNode {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
   }
-  @keyframes streamFlowReverse {
-    from { stroke-dashoffset: 0; }
-    to { stroke-dashoffset: 48; }
-  }
-
-  /* --- Node Interactions --- */
-  .node {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    animation: fadeInNode 0.8s ease-out backwards;
-  }
-  .node:hover {
-    transform: translate(-50%, -55%) scale(1.15);
-    z-index: 50;
-    cursor: pointer;
-    filter: brightness(1.2);
-  }
-
-  /* --- Feature Chips --- */
-  .feature-chip {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 9999px;
-    border-width: 1px;
-    font-size: 9px;
-    line-height: 1.1;
-    font-weight: 500;
-    backdrop-filter: blur(4px);
-    white-space: nowrap;
-    animation: floatChip 4s ease-in-out infinite, fadeInScale 0.6s ease-out backwards;
-    z-index: 30;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media (min-width: 768px) {
-    .feature-chip { font-size: 11px; padding: 6px 14px; gap: 8px; }
-  }
-
-  .feature-chip:hover {
-    transform: translateX(-50%) scale(1.05);
-    z-index: 50;
-    border-color: white;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* --- Keyframes & Delays --- */
-  @keyframes floatChip {
-    0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-5px); }
-  }
-
-  @keyframes fadeInNode {
-    from { opacity: 0; transform: translate(-50%, -30%) scale(0.9); }
-    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
-  }
-
-  @keyframes fadeInScale {
-    from { opacity: 0; transform: translateX(-50%) scale(0.8); }
-    to { opacity: 1; transform: translateX(-50%) scale(1); }
-  }
-
-  .animate-pulse-slow { animation: pulseBg 6s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-  .animate-pulse-fast { animation: pulseRed 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
-
-  @keyframes pulseBg {
-    0%, 100% { opacity: 0.1; transform: scale(1); }
-    50% { opacity: 0.2; transform: scale(1.05); }
-  }
-  
-  @keyframes pulseRed {
-    0%, 100% { box-shadow: 0 0 20px rgba(220,38,38,0.4); }
-    50% { box-shadow: 0 0 35px rgba(220,38,38,0.8); }
-  }
-
-  /* Delays */
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.3s; }
-  .delay-3 { animation-delay: 0.5s; }
-  .delay-4 { animation-delay: 0.7s; }
-  .delay-5 { animation-delay: 0.9s; }
-  .delay-6 { animation-delay: 1.1s; }
 </style>
