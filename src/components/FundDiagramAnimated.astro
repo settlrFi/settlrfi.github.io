@@ -1,5 +1,5 @@
 ---
-// FundDiagramDarkAnimated.astro
+// FundDiagramDarkAnimatedLarge.astro
 ---
 
 <div class="relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden border border-slate-700/60 shadow-[0_0_50px_rgba(59,130,246,0.15)] bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 group">
@@ -7,9 +7,9 @@
   {/* Sfondo Griglia Animata Cyber */}
   <div class="absolute inset-0 z-0 opacity-20 pointer-events-none" style="background-image: radial-gradient(#38bdf8 1px, transparent 1px); background-size: 30px 30px; animation: panGrid 20s linear infinite;"></div>
 
-  {/* Contenitore SVG */}
-  <div class="relative z-10 w-full aspect-[16/11] min-h-[650px]">
-    <svg viewBox="0 0 1100 700" class="w-full h-full drop-shadow-2xl" preserveAspectRatio="xMidYMid meet">
+  {/* Contenitore SVG - ViewBox ingrandita a 800 di altezza per distanziare gli elementi */}
+  <div class="relative z-10 w-full aspect-[16/11] min-h-[600px]">
+    <svg viewBox="0 0 1100 800" class="w-full h-full drop-shadow-2xl" preserveAspectRatio="xMidYMid meet">
       
       <defs>
         <style>
@@ -27,7 +27,7 @@
           .hud-chip:hover { transform: scale(1.05); filter: brightness(1.3); }
         </style>
 
-        {/* Gradienti per connessioni verticali (On-chain vs Off-chain) */}
+        {/* Gradienti */}
         <linearGradient id="grad-blue-orange" x1="0%" y1="100%" x2="0%" y2="0%">
           <stop offset="0%" stop-color="#3b82f6" />
           <stop offset="100%" stop-color="#f97316" />
@@ -46,242 +46,231 @@
           <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.01" />
         </linearGradient>
 
-        {/* Frecce */}
-        <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        {/* Frecce Ingrandite */}
+        <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#f97316" />
         </marker>
-        <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
         </marker>
-        <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4" />
         </marker>
 
         {/* Filtri Glow */}
         <filter id="glowHeavy" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
+          <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
         <filter id="glowSubtle" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
         </filter>
       </defs>
 
-      {/* ================= INTESTAZIONE ================= */}
-      <text x="40" y="60" fill="#e2e8f0" font-size="34" class="tech-font font-extrabold drop-shadow-lg">Fund Process Model</text>
-      <text x="40" y="90" fill="#94a3b8" font-size="16" class="tech-font font-medium">Tokenized workflow vs Traditional execution</text>
+      {/* ================= INTESTAZIONE MAGGIORATA ================= */}
+      <text x="40" y="70" fill="#e2e8f0" font-size="46" class="tech-font font-extrabold drop-shadow-lg">Fund Process Model</text>
+      <text x="40" y="110" fill="#94a3b8" font-size="22" class="tech-font font-medium">Tokenized workflow vs Traditional execution</text>
 
 
       {/* ================= AREE (ZONES) ================= */}
       {/* On-Chain Zone */}
-      <rect x="40" y="120" width="1020" height="220" rx="16" fill="url(#bg-zone-orange)" stroke="#f97316" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
-      <g transform="translate(60, 145)">
-        <rect x="0" y="-15" width="100" height="24" rx="4" fill="#f97316" fill-opacity="0.2" stroke="#f97316" stroke-width="1"/>
-        <text x="50" y="1" fill="#fdba74" font-size="12" font-weight="bold" text-anchor="middle" class="tech-font tracking-widest uppercase">ON-CHAIN</text>
+      <rect x="40" y="140" width="1020" height="260" rx="16" fill="url(#bg-zone-orange)" stroke="#f97316" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
+      <g transform="translate(60, 165)">
+        <rect x="-10" y="-22" width="130" height="32" rx="4" fill="#f97316" fill-opacity="0.2" stroke="#f97316" stroke-width="1"/>
+        <text x="55" y="0" fill="#fdba74" font-size="16" font-weight="bold" text-anchor="middle" class="tech-font tracking-widest uppercase">ON-CHAIN</text>
       </g>
 
       {/* Off-Chain Zone */}
-      <rect x="40" y="400" width="1020" height="220" rx="16" fill="url(#bg-zone-blue)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
-      <g transform="translate(60, 600)">
-        <rect x="0" y="-15" width="100" height="24" rx="4" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
-        <text x="50" y="1" fill="#93c5fd" font-size="12" font-weight="bold" text-anchor="middle" class="tech-font tracking-widest uppercase">OFF-CHAIN</text>
+      <rect x="40" y="470" width="1020" height="260" rx="16" fill="url(#bg-zone-blue)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 6" opacity="0.5"/>
+      <g transform="translate(60, 710)">
+        <rect x="-10" y="-22" width="140" height="32" rx="4" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="1"/>
+        <text x="60" y="0" fill="#93c5fd" font-size="16" font-weight="bold" text-anchor="middle" class="tech-font tracking-widest uppercase">OFF-CHAIN</text>
       </g>
 
 
-      {/* ================= COLLEGAMENTI (PATHS) ================= */}
+      {/* ================= COLLEGAMENTI (PATHS) RICALCOLATI ================= */}
       
       {/* 1. Orizzontali On-Chain (Orange) */}
-      <path d="M 230 230 L 520 230" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
-      <path d="M 230 230 L 520 230" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
+      <path d="M 250 270 L 490 270" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 250 270 L 490 270" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
 
-      <path d="M 580 230 L 870 230" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
-      <path d="M 580 230 L 870 230" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
+      <path d="M 610 270 L 850 270" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 610 270 L 850 270" stroke="#f97316" stroke-width="3" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
 
       {/* 2. Orizzontali Off-Chain (Blue) */}
-      <path d="M 230 510 L 520 510" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
-      <path d="M 230 510 L 520 510" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
+      <path d="M 250 600 L 490 600" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 250 600 L 490 600" stroke="#3b82f6" stroke-width="3" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
 
-      <path d="M 580 510 L 870 510" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
-      <path d="M 580 510 L 870 510" stroke="#3b82f6" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
+      <path d="M 610 600 L 850 600" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 610 600 L 850 600" stroke="#3b82f6" stroke-width="3" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
 
       {/* 3. Verticali Cross-Chain (Gradienti) */}
-      {/* Investor -> Issuer */}
-      <path d="M 200 480 L 200 260" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
-      <path d="M 200 480 L 200 260" stroke="url(#grad-blue-orange)" stroke-width="2" fill="none" marker-end="url(#arrowOrange)" opacity="0.8"/>
+      <path d="M 200 550 L 200 360" stroke="#475569" stroke-width="4" fill="none" class="animated-path-rev"/>
+      <path d="M 200 550 L 200 360" stroke="#5c30cd" stroke-width="3" stroke-dasharray="8 8" fill="none" marker-end="url(#arrowPurple)" marker-start="url(#arrowPurple)" opacity="0.8"/>
       
-      {/* Platform -> Custodian Off */}
-      <path d="M 550 260 L 550 480" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
-      <path d="M 550 260 L 550 480" stroke="url(#grad-orange-blue)" stroke-width="2" fill="none" marker-end="url(#arrowBlue)" opacity="0.8"/>
+      <path d="M 550 360 L 550 550" stroke="#475569" stroke-width="4" fill="none" class="animated-path"/>
+      <path d="M 550 360 L 550 550" stroke="#5c30cd" stroke-width="3" 
+      stroke-dasharray="8 8" fill="none" marker-end="url(#arrowPurple)" opacity="0.8"/>
 
-      {/* Custodian On <-> NAV Setter */}
-      <path d="M 900 480 L 900 260" stroke="#475569" stroke-width="4" fill="none" class="animated-path-rev"/>
-      <path d="M 900 480 L 900 260" stroke="#06b6d4" stroke-width="2" stroke-dasharray="6 6" fill="none" marker-end="url(#arrowCyan)" marker-start="url(#arrowCyan)" opacity="0.8"/>
-
-
-      {/* ================= PARTICELLE ANIMATE ================= */}
-      <circle r="5" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 230 230 L 520 230" /></circle>
-      <circle r="5" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 580 230 L 870 230" /></circle>
-      <circle r="5" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 230 510 L 520 510" /></circle>
-      <circle r="5" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 580 510 L 870 510" /></circle>
-      <circle r="5" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2s" repeatCount="indefinite" path="M 200 480 L 200 260" /></circle>
-      <circle r="5" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2s" repeatCount="indefinite" path="M 550 260 L 550 480" /></circle>
-      <circle r="5" fill="#06b6d4" filter="url(#glowSubtle)"><animateMotion dur="3s" repeatCount="indefinite" path="M 900 480 L 900 260" /></circle>
+      <path d="M 900 550 L 900 360" stroke="#475569" stroke-width="4" fill="none" class="animated-path-rev"/>
+      <path d="M 900 550 L 900 360" stroke="#5c30cd" stroke-width="3" stroke-dasharray="8 8" fill="none" marker-end="url(#arrowPurple)" marker-start="url(#arrowPurple)" opacity="0.8"/>
 
 
-      {/* ================= CHIPS HUD (Etichette Tecniche) ================= */}
+      {/* ================= PARTICELLE ================= */}
+      <circle r="6" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 270 L 490 270" /></circle>
+      <circle r="6" fill="#f97316" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 610 270 L 850 270" /></circle>
+      <circle r="6" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 250 600 L 490 600" /></circle>
+      <circle r="6" fill="#3b82f6" filter="url(#glowSubtle)"><animateMotion dur="2.5s" repeatCount="indefinite" path="M 610 600 L 850 600" /></circle>
+
+
+      {/* ================= CHIPS HUD INGRANDITI ================= */}
       
       {/* Chips On-Chain (Orange) */}
-      <foreignObject x="300" y="170" width="160" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2 shadow-[0_0_5px_#f97316]"></div>
-          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Order Validation</span>
+      <foreignObject x="270" y="195" width="200" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-orange-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(249,115,22,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-orange-500 mr-3 shadow-[0_0_8px_#f97316]"></div>
+          <span class="text-orange-200 text-sm font-semibold whitespace-nowrap">Order Validation</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="270" y="260" width="140" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2"></div>
-          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Workflow Logic</span>
+      <foreignObject x="265" y="305" width="180" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-orange-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(249,115,22,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-orange-500 mr-3"></div>
+          <span class="text-orange-200 text-sm font-semibold whitespace-nowrap">Workflow Logic</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="640" y="170" width="180" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2"></div>
-          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Transfer Agency Rules</span>
+      <foreignObject x="600" y="195" width="230" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-orange-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(249,115,22,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-orange-500 mr-3"></div>
+          <span class="text-orange-200 text-sm font-semibold whitespace-nowrap">Transfer Agency Rules</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="670" y="260" width="140" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-orange-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(249,115,22,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-orange-500 mr-2"></div>
-          <span class="text-orange-200 text-[11px] font-semibold whitespace-nowrap">Fee Logic</span>
+      <foreignObject x="640" y="305" width="150" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-orange-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(249,115,22,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-orange-500 mr-3"></div>
+          <span class="text-orange-200 text-sm font-semibold whitespace-nowrap">Fee Logic</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="830" y="150" width="160" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-amber-400/60 rounded-full px-3 py-1 shadow-[0_0_15px_rgba(251,191,36,0.5)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-amber-400 mr-2 animate-pulse"></div>
-          <span class="text-amber-200 text-[11px] font-bold whitespace-nowrap">On-Chain Registry</span>
+      <foreignObject x="800" y="170" width="200" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-amber-400/60 rounded-full px-4 py-2 shadow-[0_0_20px_rgba(251,191,36,0.6)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-amber-400 mr-3 animate-pulse"></div>
+          <span class="text-amber-200 text-sm font-bold whitespace-nowrap">On-Chain Registry</span>
         </div>
       </foreignObject>
 
       {/* Chips Off-Chain (Blue/Cyan) */}
-      <foreignObject x="290" y="450" width="120" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2 shadow-[0_0_5px_#3b82f6]"></div>
-          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">KYC/AML</span>
+      <foreignObject x="280" y="525" width="140" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-blue-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(59,130,246,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-blue-500 mr-3 shadow-[0_0_8px_#3b82f6]"></div>
+          <span class="text-blue-200 text-sm font-semibold whitespace-nowrap">KYC/AML</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="320" y="530" width="160" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
-          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">Cash Movements</span>
+      <foreignObject x="280" y="635" width="190" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-blue-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(59,130,246,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-blue-500 mr-3"></div>
+          <span class="text-blue-200 text-sm font-semibold whitespace-nowrap">Cash Movements</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="450" y="430" width="120" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
-          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">Controls</span>
+      <foreignObject x="430" y="490" width="150" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-blue-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(59,130,246,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-blue-500 mr-3"></div>
+          <span class="text-blue-200 text-sm font-semibold whitespace-nowrap">Controls</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="650" y="450" width="180" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-blue-500/50 rounded-full px-3 py-1 shadow-[0_0_10px_rgba(59,130,246,0.3)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-blue-500 mr-2"></div>
-          <span class="text-blue-200 text-[11px] font-semibold whitespace-nowrap">Custodian Oversight</span>
+      <foreignObject x="630" y="525" width="220" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-blue-500/50 rounded-full px-4 py-2 shadow-[0_0_12px_rgba(59,130,246,0.4)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-blue-500 mr-3"></div>
+          <span class="text-blue-200 text-sm font-semibold whitespace-nowrap">Custodian Oversight</span>
         </div>
       </foreignObject>
 
-      <foreignObject x="700" y="540" width="160" height="40" class="overflow-visible z-20 hud-chip">
-        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center bg-slate-900/90 border border-cyan-400/60 rounded-full px-3 py-1 shadow-[0_0_15px_rgba(34,211,238,0.5)] backdrop-blur-md">
-          <div class="w-2 h-2 rounded-full bg-cyan-400 mr-2 animate-pulse"></div>
-          <span class="text-cyan-200 text-[11px] font-bold whitespace-nowrap">NAV Calculation</span>
+      <foreignObject x="620" y="635" width="190" height="50" class="overflow-visible z-20 hud-chip">
+        <div xmlns="http://www.w3.org/1999/xhtml" class="tech-font flex items-center justify-center bg-slate-900/90 border border-cyan-400/60 rounded-full px-4 py-2 shadow-[0_0_20px_rgba(34,211,238,0.6)] backdrop-blur-md">
+          <div class="w-3 h-3 rounded-full bg-cyan-400 mr-3 animate-pulse"></div>
+          <span class="text-cyan-200 text-sm font-bold whitespace-nowrap">NAV Calculation</span>
         </div>
       </foreignObject>
 
 
-      {/* ================= NODI VETTORIALI (SVG PURI) ================= */}
+      {/* ================= NODI MAGGIORATI (Font 24px) ================= */}
       
       {/* 1. Issuer (On-chain) */}
-      <g transform="translate(200, 230)">
+      <g transform="translate(200, 270)">
         <g class="node-float">
-          <polygon points="0,-30 35,0 0,30 -35,0" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowSubtle)"/>
-          <line x1="0" y1="-15" x2="0" y2="15" stroke="#f97316" stroke-width="2"/>
-          <line x1="-15" y1="0" x2="15" y2="0" stroke="#f97316" stroke-width="2"/>
-          <circle cx="0" cy="0" r="4" fill="#fdba74"/>
-          <text x="0" y="55" text-anchor="middle" fill="#fdba74" font-size="16" class="tech-font font-bold">Issuer</text>
+          <polygon points="0,-35 40,0 0,35 -40,0" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowSubtle)"/>
+          <line x1="0" y1="-18" x2="0" y2="18" stroke="#f97316" stroke-width="2"/>
+          <line x1="-18" y1="0" x2="18" y2="0" stroke="#f97316" stroke-width="2"/>
+          <circle cx="0" cy="0" r="5" fill="#fdba74"/>
+          <text x="0" y="70" text-anchor="middle" fill="#fdba74" font-size="24" class="tech-font font-bold">Issuer</text>
         </g>
       </g>
 
       {/* 2. Platform (On-chain) */}
-      <g transform="translate(550, 230)">
+      <g transform="translate(550, 270)">
         <g class="node-float-delay">
-          <rect x="-40" y="-30" width="80" height="60" rx="8" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowHeavy)"/>
-          <rect x="-30" y="-20" width="60" height="40" rx="4" fill="none" stroke="#fb923c" stroke-width="1.5" stroke-dasharray="4 2"/>
-          <circle cx="-15" cy="0" r="3" fill="#f97316"/>
-          <circle cx="0" cy="0" r="3" fill="#f97316"/>
-          <circle cx="15" cy="0" r="3" fill="#f97316"/>
-          <text x="0" y="55" text-anchor="middle" fill="#fdba74" font-size="18" class="tech-font font-bold">Platform</text>
+          <rect x="-45" y="-35" width="90" height="70" rx="10" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowHeavy)"/>
+          <rect x="-35" y="-25" width="70" height="50" rx="6" fill="none" stroke="#fb923c" stroke-width="2" stroke-dasharray="6 3"/>
+          <circle cx="-18" cy="0" r="4" fill="#f97316"/>
+          <circle cx="0" cy="0" r="4" fill="#f97316"/>
+          <circle cx="18" cy="0" r="4" fill="#f97316"/>
+          <text x="0" y="70" text-anchor="middle" fill="#fdba74" font-size="24" class="tech-font font-bold">Platform</text>
         </g>
       </g>
 
       {/* 3. Custodian (On-chain) */}
-      <g transform="translate(900, 230)">
+      <g transform="translate(900, 270)">
         <g class="node-float">
-          <path d="M -30,-20 L 30,-20 L 40,0 L 30,20 L -30,20 L -40,0 Z" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowSubtle)"/>
-          <circle cx="0" cy="0" r="10" fill="none" stroke="#fdba74" stroke-width="2"/>
-          <circle cx="0" cy="0" r="4" fill="#f97316"/>
-          <text x="0" y="55" text-anchor="middle" fill="#fdba74" font-size="16" class="tech-font font-bold">Custodian</text>
+          <path d="M -35,-25 L 35,-25 L 45,0 L 35,25 L -35,25 L -45,0 Z" fill="#0f172a" stroke="#f97316" stroke-width="3" filter="url(#glowSubtle)"/>
+          <circle cx="0" cy="0" r="12" fill="none" stroke="#fdba74" stroke-width="2"/>
+          <circle cx="0" cy="0" r="5" fill="#f97316"/>
+          <text x="0" y="70" text-anchor="middle" fill="#fdba74" font-size="24" class="tech-font font-bold">Custodian</text>
         </g>
       </g>
 
       {/* 4. Investor (Off-chain) */}
-      <g transform="translate(200, 510)">
+      <g transform="translate(200, 600)">
         <g class="node-float-delay">
-          <circle cx="0" cy="0" r="30" fill="#0f172a" stroke="#3b82f6" stroke-width="3" filter="url(#glowSubtle)"/>
-          <circle cx="0" cy="-6" r="6" fill="none" stroke="#93c5fd" stroke-width="2"/>
-          <path d="M -12,12 C -12,4 12,4 12,12" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
-          <text x="0" y="55" text-anchor="middle" fill="#93c5fd" font-size="16" class="tech-font font-bold">Investor</text>
+          <circle cx="0" cy="0" r="35" fill="#0f172a" stroke="#3b82f6" stroke-width="3" filter="url(#glowSubtle)"/>
+          <circle cx="0" cy="-8" r="7" fill="none" stroke="#93c5fd" stroke-width="2"/>
+          <path d="M -15,15 C -15,5 15,5 15,15" fill="none" stroke="#93c5fd" stroke-width="2" stroke-linecap="round"/>
+          <text x="0" y="70" text-anchor="middle" fill="#93c5fd" font-size="24" class="tech-font font-bold">Investor</text>
         </g>
       </g>
 
       {/* 5. Custodian (Off-chain) */}
-      <g transform="translate(550, 510)">
+      <g transform="translate(550, 600)">
         <g class="node-float">
-          <rect x="-35" y="-25" width="70" height="50" rx="4" fill="#0f172a" stroke="#3b82f6" stroke-width="3" filter="url(#glowSubtle)"/>
-          <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#60a5fa" stroke-width="2"/>
-          <line x1="-20" y1="0" x2="20" y2="0" stroke="#60a5fa" stroke-width="2"/>
-          <line x1="-20" y1="10" x2="0" y2="10" stroke="#60a5fa" stroke-width="2"/>
-          <text x="0" y="55" text-anchor="middle" fill="#93c5fd" font-size="16" class="tech-font font-bold">Custodian</text>
+          <rect x="-40" y="-30" width="80" height="60" rx="6" fill="#0f172a" stroke="#3b82f6" stroke-width="3" filter="url(#glowSubtle)"/>
+          <line x1="-25" y1="-12" x2="25" y2="-12" stroke="#60a5fa" stroke-width="2"/>
+          <line x1="-25" y1="0" x2="25" y2="0" stroke="#60a5fa" stroke-width="2"/>
+          <line x1="-25" y1="12" x2="0" y2="12" stroke="#60a5fa" stroke-width="2"/>
+          <text x="0" y="70" text-anchor="middle" fill="#93c5fd" font-size="24" class="tech-font font-bold">Custodian</text>
         </g>
       </g>
 
       {/* 6. NAV Setter (Off-chain) */}
-      <g transform="translate(900, 510)">
+      <g transform="translate(900, 600)">
         <g class="node-float-delay">
-          <polygon points="0,30 30,-10 -30,-10" fill="#0f172a" stroke="#06b6d4" stroke-width="3" filter="url(#glowSubtle)"/>
-          <polygon points="0,15 15,-5 -15,-5" fill="#06b6d4" opacity="0.5"/>
-          <line x1="-20" y1="-20" x2="20" y2="-20" stroke="#22d3ee" stroke-width="2"/>
-          <text x="0" y="55" text-anchor="middle" fill="#67e8f9" font-size="16" class="tech-font font-bold">NAV Setter</text>
+          <polygon points="0,35 35,-15 -35,-15" fill="#0f172a" stroke="#06b6d4" stroke-width="3" filter="url(#glowSubtle)"/>
+          <polygon points="0,18 18,-6 -18,-6" fill="#06b6d4" opacity="0.5"/>
+          <line x1="-25" y1="-25" x2="25" y2="-25" stroke="#22d3ee" stroke-width="2"/>
+          <text x="0" y="70" text-anchor="middle" fill="#67e8f9" font-size="24" class="tech-font font-bold">NAV Setter</text>
         </g>
       </g>
 
 
-      {/* ================= BADGE CENTRALE T+1 ================= */}
-      <g transform="translate(550, 360)">
-        <rect x="-110" y="-20" width="220" height="40" rx="20" fill="#4c0519" stroke="#f43f5e" stroke-width="2" filter="url(#glowHeavy)"/>
-        <text x="0" y="5" fill="#fecdd3" font-size="14" font-weight="bold" text-anchor="middle" class="tech-font tracking-wide">
-          <tspan fill="#f43f5e">⚠</tspan> THIS IS A T+1 PROCESS
+      {/* ================= BADGE T+1 INGRANDITO ================= */}
+      <g transform="translate(550, 435)">
+        <rect x="-140" y="-25" width="280" height="50" rx="25" fill="#4c0519" stroke="#f43f5e" stroke-width="2" filter="url(#glowHeavy)"/>
+        <text x="0" y="6" fill="#fecdd3" font-size="18" font-weight="bold" text-anchor="middle" class="tech-font tracking-wide">
+          <tspan fill="#f43f5e" font-size="22">⚠</tspan> THIS IS A T+1 PROCESS
         </text>
       </g>
 
@@ -290,13 +279,10 @@
 </div>
 
 <style>
-  /* Movimento della griglia di sfondo */
   @keyframes panGrid {
     0% { background-position: 0 0; }
     100% { background-position: 30px 30px; }
   }
-
-  /* Effetto galleggiamento per i nodi */
   .node-float { animation: floatNode 6s ease-in-out infinite; }
   .node-float-delay { animation: floatNode 6s ease-in-out infinite 3s; }
   @keyframes floatNode {
