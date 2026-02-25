@@ -21,7 +21,7 @@ const navLinks = [
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=1280, initial-scale=0.42" />
+    <meta name="viewport" content="width=1280, initial-scale=0.6" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/img/settlr.png" />
@@ -109,12 +109,13 @@ const navLinks = [
         }
 
         .cyber-grid {
-          opacity: 0.14;
+          display: none;
+          opacity: 0;
         }
 
         .grid-lines {
           animation: none !important;
-          transform: rotateX(60deg);
+          transform: none;
         }
 
         .glass-nav {
