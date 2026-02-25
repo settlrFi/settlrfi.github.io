@@ -21,6 +21,10 @@
           .animated-path { stroke-dasharray: 8 6; animation: dashMove 1s linear infinite; }
         </style>
 
+        <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" fill="#34d399" />
+        </marker>
+
         <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M 0 0 L 10 5 L 0 10 z" fill="#60a5fa" />
         </marker>
@@ -49,29 +53,29 @@
       {/* ================= COLLEGAMENTI (PATHS) RICALCOLATI ================= */}
       
       {/* Da RWA a Platform */}
-      <path d="M 980 180 Q 800 220 650 320" stroke="#475569" stroke-width="5" fill="none" class="animated-path"/>
-      <path d="M 980 180 Q 800 220 650 320" stroke="#38bdf8" stroke-width="3" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
+      <path d="M 980 180 Q 800 220 750 280" stroke="#475569" stroke-width="5" fill="none" class="animated-path"/>
+      <path d="M 980 180 Q 800 220 750 280" stroke="#38bdf8" stroke-width="3" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
 
       {/* Da Investor a Platform */}
       <path d="M 180 600 Q 320 520 480 430" stroke="#475569" stroke-width="5" fill="none" class="animated-path"/>
-      <path d="M 180 600 Q 320 520 480 430" stroke="#f472b6" stroke-width="3" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
+      <path d="M 180 600 Q 320 520 480 430" stroke="#f472b6" stroke-width="3" fill="none" marker-end="url(#arrowPink)" opacity="0.6"/>
 
       {/* Da Maker a Platform */}
       <path d="M 750 580 Q 680 500 630 430" stroke="#475569" stroke-width="5" fill="none" class="animated-path"/>
-      <path d="M 750 580 Q 680 500 630 430" stroke="#a78bfa" stroke-width="3" fill="none" marker-end="url(#arrowBlue)" opacity="0.6"/>
+      <path d="M 750 580 Q 680 500 630 430" stroke="#a78bfa" stroke-width="3" fill="none" marker-end="url(#arrowPurple)" opacity="0.6"/>
 
       {/* Tra Maker e Custodian (Linee orizzontali) */}
       <path d="M 850 610 L 1010 610" stroke="#8b5cf6" stroke-width="4" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="8 6">
         <animate attributeName="stroke-dashoffset" from="14" to="0" dur="0.6s" repeatCount="indefinite"/>
       </path>
-      <path d="M 1010 640 L 850 640" stroke="#10b981" stroke-width="4" fill="none" marker-end="url(#arrowPurple)" stroke-dasharray="8 6">
+      <path d="M 1010 640 L 850 640" stroke="#10b981" stroke-width="4" fill="none" marker-end="url(#arrowGreen)" stroke-dasharray="8 6">
         <animate attributeName="stroke-dashoffset" from="0" to="14" dur="0.6s" repeatCount="indefinite"/>
       </path>
 
 
       {/* ================= PARTICELLE ================= */}
       <circle r="8" fill="#38bdf8" filter="url(#glowHeavy)">
-        <animateMotion dur="3.5s" repeatCount="indefinite" path="M 980 180 Q 800 220 650 320" />
+        <animateMotion dur="3s" repeatCount="indefinite" path="M 980 180 Q 800 220 750 280" />
       </circle>
       <circle r="8" fill="#f472b6" filter="url(#glowHeavy)">
         <animateMotion dur="3s" repeatCount="indefinite" path="M 180 600 Q 320 520 480 430" />
