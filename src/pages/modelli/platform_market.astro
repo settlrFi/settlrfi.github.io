@@ -680,8 +680,11 @@ const pageSubtitle = "DeFi x TradFi Settlement Layer";
       animation-delay: 4s;
     }
 
-    @media (max-width: 767px) {
+    @media (hover: none) and (pointer: coarse) {
       .platform-page .platform-fx {
+        display: none;
+      }
+      .platform-page .platform-noise {
         display: none;
       }
       .platform-page .platform-glow {

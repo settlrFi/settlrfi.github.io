@@ -21,7 +21,7 @@ const navLinks = [
 <html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=1280, initial-scale=0.3" />
+    <meta name="viewport" content="width=1280, initial-scale=0.42" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href="/img/settlr.png" />
@@ -102,7 +102,7 @@ const navLinks = [
         .grid-lines { animation: none !important; }
       }
 
-      @media (max-width: 767px) {
+      @media (hover: none) and (pointer: coarse) {
         /* Max mobile stability mode */
         #networkCanvas {
           display: none;
@@ -302,7 +302,7 @@ const navLinks = [
         const menu = document.getElementById('mobileMenu');
         const links = document.querySelectorAll('.mobile-link');
 
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
         const disableCanvas = isMobile || (document.body.classList.contains('page-platform-market') && isMobile);
 
         let startAnimation = () => {};
@@ -348,12 +348,13 @@ const navLinks = [
         };
 
         function applyConfig() {
-          const mobile = window.innerWidth < 768 || (navigator.connection && navigator.connection.saveData);
-          config.particleCount = mobile ? 10 : 60;
-          config.connectionDistance = mobile ? 90 : 160;
-          config.mouseDistance = mobile ? 110 : 200;
-          config.speed = mobile ? 0.18 : 0.35;
-          config.maxFps = mobile ? 24 : 60;
+          const mobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches ||
+            (navigator.connection && navigator.connection.saveData);
+          config.particleCount = mobile ? 8 : 60;
+          config.connectionDistance = mobile ? 80 : 160;
+          config.mouseDistance = mobile ? 90 : 200;
+          config.speed = mobile ? 0.16 : 0.35;
+          config.maxFps = mobile ? 20 : 60;
         }
 
         // Tickers Finanziari/Crypto
