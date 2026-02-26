@@ -225,7 +225,7 @@
       <g transform="translate(760, 500)">
         <circle cx="0" cy="0" r="50" fill="#1e293b" stroke="#6366f1" stroke-width="3" filter="url(#glowHeavy)"/>
         <circle cx="0" cy="0" r="45" fill="none" stroke="#3b82f6" stroke-width="5" opacity="0.5">
-          <animate style="animation: pulseCore 3s infinite" />
+          <animate style="animation: pulseCore 1s infinite" />
         </circle>
         
         {/* Core Icon */}
@@ -235,9 +235,15 @@
         <circle cx="0" cy="0" r="9" fill="#60a5fa">
           <animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite"/>
         </circle>
-        <line x1="0" y1="0" x2="-20" y2="-15" stroke="#60a5fa" stroke-width="2"/>
-        <line x1="0" y1="0" x2="20" y2="-15" stroke="#60a5fa" stroke-width="2"/>
-        <line x1="0" y1="0" x2="0" y2="30" stroke="#60a5fa" stroke-width="2"/>
+        <line x1="0" y1="0" x2="-20" y2="-15" stroke="#60a5fa" stroke-width="2">
+          <animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="0" y1="0" x2="20" y2="-15" stroke="#60a5fa" stroke-width="2">
+          <animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/>
+        </line>
+        <line x1="0" y1="0" x2="0" y2="30" stroke="#60a5fa" stroke-width="2">
+          <animate attributeName="opacity" values="1;0;1" dur="3s" repeatCount="indefinite"/>
+        </line>
         
         <text x="0" y="75" text-anchor="middle" fill="#e2e8f0" font-size="28" class="tech-font font-extrabold" filter="url(#glowHeavy)">Blockchain Core</text>
       </g>
